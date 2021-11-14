@@ -44,25 +44,17 @@ public class BusinessTrip   {
         int rub = b / 100;
         int coin = b % 100;
         return String.format("%d.%d", rub, coin);
-
     }
-
-
     public String formata(int transportationExpenses) {
-
         int rub = transportationExpenses / 100;
         int coin = transportationExpenses % 100;
         return String.format("%d.%d", rub, coin);
-
     }
-
     public String formata1(int DAILY_ALLOWANCE) {
 
         int rub = DAILY_ALLOWANCE / 100;
         int coin = DAILY_ALLOWANCE % 100;
         return String.format("%d.%d", rub, coin);
-
-
     }
 
     public void show() {
