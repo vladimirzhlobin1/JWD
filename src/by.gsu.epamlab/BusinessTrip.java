@@ -15,7 +15,7 @@ public class BusinessTrip {
         this.numberOfDays = numberOfDays;
     }
 
-    public String getAccountOfEmploee() {
+    public String getAccountOfEmployee() {
         return accountOfEmployee;
     }
 
