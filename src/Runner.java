@@ -9,7 +9,8 @@ public class Runner {
                 null,
                 new BusinessTrip("Vladimir", 2510, 4),
                 new BusinessTrip()};
-        BusinessTrip maxCostTrip = new BusinessTrip("Loli", 1212, 4);
+        BusinessTrip maxCostTrip = new BusinessTrip();
+        //display objects BusinessTrip
         for (BusinessTrip businessTrip : businessTrips) {
             // catch null object
             if (businessTrip != null) {
@@ -20,9 +21,9 @@ public class Runner {
                 }
 
             }
-            System.out.println("MaxCost = " + maxCostTrip);
-        }
 
+        }
+        System.out.println("MaxCost = " + maxCostTrip);
 
         // give some money last's employee
 

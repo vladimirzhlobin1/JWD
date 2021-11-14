@@ -2,7 +2,7 @@ package by.gsu.epamlab;
 
 public class BusinessTrip {
     private final static int DAILY_ALLOWANCE = 5457;
-    private String accountOfEmployee;// according with bank's programs
+    private String accountOfEmployee;
     private int transportationExpenses;
     private int numberOfDays;
 
@@ -38,20 +38,18 @@ public class BusinessTrip {
     public void setNumberOfDays(int numberOfDays) {
         this.numberOfDays = numberOfDays;
     }
-
+// method for obtaining the entire value
     public int getTotal() {
-        int b = transportationExpenses + DAILY_ALLOWANCE * numberOfDays;
         return DAILY_ALLOWANCE * numberOfDays + transportationExpenses;
     }
 
     private static String format(int a) {
-        int rub = a / 100;
-        int coin = a % 100;
-        return String.format("%d.%02d", rub, coin);
+
+        return String.format("%d.%02d",a / 100,a % 100);
     }
 
     public void show() {
-        System.out.println("-- Daily Allowance=" + format(DAILY_ALLOWANCE) + "\nAccount of emploee="
+        System.out.println("-- Daily Allowance=" + format(DAILY_ALLOWANCE) + "\nAccount of employee="
                 + accountOfEmployee + "\nTransportation expenses = " + format(transportationExpenses)
                 + ";\nNumber of days = " + numberOfDays
                 + ";\nTotal rate = " + format(getTotal()) + "\n");
