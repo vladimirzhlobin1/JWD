@@ -23,7 +23,7 @@ public class Runner {
             }
 
         }
-        System.out.println("MaxCost = " + maxCostTrip);
+        System.out.println("MaxCostTrip = " + maxCostTrip);
 
         // give some money last's employee
 
@@ -31,7 +31,8 @@ public class Runner {
 
         // total during of muchmoney's trips
         System.out.println("Duration of business trips for the last two employees = "
-                + (businessTrips[0].getNumberOfDays() + businessTrips[1].getNumberOfDays()) + " days");
+                + (businessTrips[0].getNumberOfDays() + businessTrips[1].getNumberOfDays())
+                + " days");
 
         for (BusinessTrip businessTrip : businessTrips) {
             // hide toString
