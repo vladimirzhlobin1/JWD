@@ -59,6 +59,7 @@ public class BusinessTrip {
     public String toString() {
         return accountOfEmployee + ";" + format(transportationExpenses) + ";"
                 + numberOfDays + ";" + format(getTotal());
+        String.format("%s;%s;%d;%s",account,format(transportationExpenses),numberOfDays,format(getTotal())));
 
     }
 

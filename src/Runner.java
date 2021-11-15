@@ -9,7 +9,7 @@ public class Runner {
                 null,
                 new BusinessTrip("Vladimir", 2510, 4),
                 new BusinessTrip()};
-        BusinessTrip maxCostTrip = new BusinessTrip();
+        BusinessTrip maxCostTrip = businessTrips[0];
         //display objects BusinessTrip
         for (BusinessTrip businessTrip : businessTrips) {
             // catch null object
