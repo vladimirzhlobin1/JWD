@@ -57,9 +57,8 @@ public class BusinessTrip {
 
     @Override
     public String toString() {
-        return accountOfEmployee + ";" + format(transportationExpenses) + ";"
-                + numberOfDays + ";" + format(getTotal());
-        String.format("%s;%s;%d;%s",account,format(transportationExpenses),numberOfDays,format(getTotal())));
+        return String.format("%s;%s;%d;%s",accountOfEmployee,format(transportationExpenses),numberOfDays,
+                format(getTotal()));
 
     }
 
