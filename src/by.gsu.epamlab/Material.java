@@ -6,7 +6,7 @@ public class Material {
 
 
     public Material() {
-        super();
+        super( );
         this.nameOfMaterial = "";
         this.densityOfMaterial = 0;
     }

@@ -9,7 +9,7 @@ public class Subject {
         super();
     }
 
-    public Subject(Material material, String name, double volume) {
+    public Subject(Material  material, String name, double volume) {
         super();
         this.material = material;
         this.nameOfSubject = name;
