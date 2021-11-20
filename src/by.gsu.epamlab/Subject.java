@@ -29,7 +29,7 @@ public class Subject {
     }
 
     public void setName(String name) {
-        this.nameOfSubject =  name;
+        this.nameOfSubject  =  name;
     }
 
     public double getVolume() {
