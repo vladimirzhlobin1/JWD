@@ -8,6 +8,6 @@ public class Runner {
         Subject wire = new Subject(STEEL, "Wire", 0.03);
         System.out.println(wire);
         wire.setMaterial(COPPER);
-        System.out.println("The mass of material is " + wire.getMass() + " kg.");
+        System.out.println("The mass of material is " + wire.getMass() + " kg. ");
     }
 }
