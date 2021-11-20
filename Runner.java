@@ -1,6 +1,6 @@
 package by.gsu.epamlab;
 
-public classс   Runner {
+public classс  Runner {
 
     public static void main(String[] args) {
 
