@@ -2,15 +2,13 @@ package by.gsu.epamlab;
 
 public class Subject {
     private Material material;
-    private String nameOfSubject;
+    private String name;
     private double volume;
 
     public Subject() {
-        super();
     }
 
-    public Subject(Material  material, String name, double volume) {
-        super();
+    public Subject(Material material, String name, double volume) {
         this.material = material;
         this.nameOfSubject = name;
         this.volume = volume;
@@ -25,11 +23,11 @@ public class Subject {
     }
 
     public String getName() {
-        return nameOfSubject;
+        return name;
     }
 
     public void setName(String name) {
-        this.nameOfSubject  =  name;
+        this.name = name;
     }
 
     public double getVolume() {
@@ -47,7 +45,7 @@ public class Subject {
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return nameOfSubject + ";" + material.getName() + ";" + material.getDensity() + ";" + volume + ";" + getMass();
+        return name + ";" + material + ";" + material() + ";" + volume + ";" + getMass();
     }
 
 }
