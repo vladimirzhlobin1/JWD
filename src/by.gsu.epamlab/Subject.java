@@ -10,7 +10,7 @@ public class Subject {
 
     public Subject(Material material, String name, double volume) {
         this.material = material;
-        this.nameOfSubject = name;
+        this.name = name;
         this.volume = volume;
     }
 
@@ -45,7 +45,7 @@ public class Subject {
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return name + ";" + material + ";" + material() + ";" + volume + ";" + getMass();
+        return name + ";" + material + ";" + material + ";" + volume + ";" + getMass();
     }
 
 }
