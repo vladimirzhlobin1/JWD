@@ -10,7 +10,7 @@ public class Subject {
 
     public Subject(Material material, String name, double volume) {
         this.material = material;
-        this.name = name;
+        this.name =  name;
         this.volume = volume;
     }
 

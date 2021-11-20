@@ -10,7 +10,7 @@ public class Material {
 
     public Material(String name, double density) {
         this.name = name;
-        this.density = density;
+        this.density  = density;
     }
 
     public String getName() {
