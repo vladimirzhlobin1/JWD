@@ -44,7 +44,7 @@ public class Subject {
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
+
         return name + ";" + material + ";" + material + ";" + volume + ";" + getMass();
     }
 
