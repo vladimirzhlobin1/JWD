@@ -1,24 +1,24 @@
 package by.gsu.epamlab;
 
 public class Subject {
-	private MaterialEnam material;
+    private Material material;
     private String name;
     private double volume;
 
     public Subject() {
     }
 
-    public Subject(MaterialEnam material, String name, double volume) {
+    public Subject(Material material, String name, double volume) {
         this.material = material;
         this.name = name;
         this.volume = volume;
     }
 
-    public MaterialEnam getMaterial() {
+    public Material getMaterial() {
         return material;
     }
 
-    public void setMaterial(MaterialEnam material) {
+    public void setMaterial(Material material) {
         this.material = material;
     }
 
@@ -44,6 +44,6 @@ public class Subject {
 
     @Override
     public String toString() {
-        return name + " ; " + material + " ;" + volume + " ; " + getMass();
+        return name + "; " + material + " ;" + volume + " ;" + getMass();
     }
 }
