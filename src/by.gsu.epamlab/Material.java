@@ -1,7 +1,6 @@
 package by.gsu.epamlab;
 
 public enum Material {
-
     STEEL(7850),
     COPPER(8500);
     private final double density;
@@ -18,9 +17,8 @@ public enum Material {
         return name().toLowerCase();
     }
 
-
     @Override
     public String toString() {
-        return getName() + "; " + density;
+        return getName() + ";" + density;
     }
 }

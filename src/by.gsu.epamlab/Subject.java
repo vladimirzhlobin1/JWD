@@ -41,9 +41,8 @@ public class Subject {
     public double getMass() {
         return material.getDensity() * volume;
     }
-
     @Override
     public String toString() {
-        return name + "; " + material + " ;" + volume + " ;" + getMass();
+        return name + ";" + material + ";" + volume + ";" + getMass();
     }
 }
