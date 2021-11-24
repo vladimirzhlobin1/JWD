@@ -1,4 +1,4 @@
-package Kloig;
+package by.gsu.epamlab;
 
 public class Subject {
 	private MaterialEnam material;
@@ -44,6 +44,6 @@ public class Subject {
 
     @Override
     public String toString() {
-        return name + "; " + material + " ;" + volume + " ;" + getMass();
+        return name + " ; " + material + " ;" + volume + " ; " + getMass();
     }
 }

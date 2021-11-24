@@ -1,4 +1,4 @@
-package Kloig;
+package by.gsu.epamlab;
 import Kloig.MaterialEnam;
 public class Runner {
 
@@ -9,7 +9,7 @@ public class Runner {
 	        Subject wire = new Subject(MaterialEnam.STEEL, "Wire ", 0.03);
 	        System.out.println(wire);
 	        wire.setMaterial(MaterialEnam.COPPER);
-	        System.out.println("The mass of material is " + wire.getMass() + " kg.");
+	        System.out.println(" The mass of material is " + wire.getMass() + " kg.");
 	    }
 	}
 
