@@ -5,7 +5,9 @@ import java.io.FileReader;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
+
 import by.gsu.epamlab.Format;
+
 public class Runner {
     public static void main(String[] args) {
         try (Scanner sc = new Scanner(new FileReader("src/purchases.txt"))) {
@@ -36,19 +38,18 @@ public class Runner {
             }
             Arrays.sort(purchases);
             lookArray(purchases);
-            if (PURCHASES_NUMBER >0) {
-                System.out.println(Format.format2(averageCost/PURCHASES_NUMBER));}
-            else {
+            if (PURCHASES_NUMBER > 0) {
+                System.out.println("Average cost = " + Format.format2(averageCost / PURCHASES_NUMBER));
+            } else {
                 System.out.println(Format.format2(averageCost));
             }
-            System.out.println("Lower cost = " + ";\n"
-                    + "Monday's purchases = " + Format.format(mondayCost)
+            System.out.println("Monday's purchases = " + Format.format(mondayCost)
                     + ";\n" + "Max purchases day: " + maxday);
             int index = Arrays.binarySearch(purchases, new Purchase(null, 5, 2));
             if (index < 0) {
                 System.out.println("Item not found");
             } else {
-                System.out.println("Request item is:" + purchases[index]);
+                System.out.println("Request item is: " + purchases[index]);
             }
         } catch (FileNotFoundException e) {
             System.err.println("File not found");
