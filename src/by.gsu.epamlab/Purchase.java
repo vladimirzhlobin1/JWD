@@ -1,12 +1,12 @@
 package by.gsu.epamlab;
 import by.gsu.epamlab.Format;
-public class Purchase implements Comparable<Purchase> 
+public class Purchase implements Comparable<Purchase>
 {
-	public static final String NAMEOFPRODUCT="Item";
+	public static final String  NAME_OF_PRODUCT="Item";
 	public static final int PRICE=770;
 	private int numberOfPurchases;
 	private WeekDay weekDay;
-	private int discountPercentage;
+	private double discountPercentage;
 	public Purchase(){
 	}
 	public Purchase(WeekDay weekDay, int numberOfPurchases,int discountPercentage)
@@ -15,7 +15,7 @@ public class Purchase implements Comparable<Purchase>
 		this.numberOfPurchases = numberOfPurchases;
 		this.discountPercentage = discountPercentage;
 	}
-	public WeekDay getWeekDay() 
+	public WeekDay getWeekDay()
 	{
 		return weekDay;
 	}
@@ -32,30 +32,31 @@ public class Purchase implements Comparable<Purchase>
 	{
 		this.numberOfPurchases = numberOfPurchases;
 	}
-	public int getCost() {
-        return (int) Math.round((PRICE * numberOfPurchases 
-        		* (100.0 - discountPercentage) / 100) * 0.01) * 100;
-    }
-	public int compareTo(Purchase purchase)
-	{ 
-        if(numberOfPurchases < purchase.numberOfPurchases)
-        {
-            return -1;
-        }
-        else if(numberOfPurchases>purchase.numberOfPurchases)
-        {
-        	return 1;
-        }	
-        return 0;
-	}
 	public int getDiscountPercentage() {
 		return discountPercentage;
 	}
 	public void setDiscountPercentage(int discountPercentage) {
 		this.discountPercentage = discountPercentage;
 	}
+	public int getCost() {
+		return (int) Math.round((PRICE * numberOfPurchases
+				* (100.0 - discountPercentage) / 100) * 0.01) * 100;
+	}
+	public int compareTo(Purchase purchase)
+	{
+		if(numberOfPurchases < purchase.numberOfPurchases)
+		{
+			return -1;
+		}
+		else if(numberOfPurchases>purchase.numberOfPurchases)
+		{
+			return 1;
+		}
+		return 0;
+	}
+
 	public String toString() {
 		return numberOfPurchases+";"+weekDay+";"+Format.format(getCost())+";";
 	}
-	
+
 }
