@@ -5,7 +5,7 @@ public class Purchase implements Comparable<Purchase>
 	public static final String  NAME_OF_PRODUCT="Item";
 	public static final int PRICE=770;
 	private int numberOfPurchases;
-	private WeekDay weekDay;
+	private WeekDay  weekDay;
 	private double discountPercentage;
 	public Purchase(){
 	}
