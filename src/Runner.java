@@ -10,7 +10,7 @@ import by.gsu.epamlab.Format;
 
 public class Runner {
     public static void main(String[] args) {
-        try (Scanner sc = new Scanner(new FileReader("src/purchases.txt"))) {
+        try (Scanner sc = new Scanner(new FileReader("src/in.txt"))) {
             sc.useLocale(Locale.ENGLISH);
             final int PURCHASES_NUMBER = sc.nextInt();
             Purchase[] purchases = new Purchase[PURCHASES_NUMBER];
@@ -36,7 +36,7 @@ public class Runner {
                     maxday = purchase.getWeekDay().toString();
                 }
             }
-            Arrays.sort(purchases);
+
             if (PURCHASES_NUMBER > 0) {
                 System.out.println("Average cost = "
                         + Format.format2(averageCost / PURCHASES_NUMBER));
@@ -46,7 +46,7 @@ public class Runner {
             System.out.println("Monday's purchases = " + Format.format(mondayCost)
                     + ";\n" + "Max purchases day: " + maxday);
             lookArray(purchases);
-
+            Arrays.sort(purchases);
             int index = Arrays.binarySearch(purchases, new Purchase(null, 5, 2));
             if (index < 0) {
                 System.out.println("Item not found");
