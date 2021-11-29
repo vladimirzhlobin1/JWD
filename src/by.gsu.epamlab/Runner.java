@@ -37,14 +37,16 @@ public class Runner {
                 }
             }
             Arrays.sort(purchases);
-            lookArray(purchases);
             if (PURCHASES_NUMBER > 0) {
-                System.out.println("Average cost = " + Format.format2(averageCost / PURCHASES_NUMBER));
+                System.out.println("Average cost = "
+                        + Format.format2(averageCost / PURCHASES_NUMBER));
             } else {
                 System.out.println(Format.format2(averageCost));
             }
             System.out.println("Monday's purchases = " + Format.format(mondayCost)
                     + ";\n" + "Max purchases day: " + maxday);
+            lookArray(purchases);
+
             int index = Arrays.binarySearch(purchases, new Purchase(null, 5, 2));
             if (index < 0) {
                 System.out.println("Item not found");

@@ -59,7 +59,8 @@ public class Purchase implements Comparable<Purchase> {
 
     @Override
     public String toString() {
-        return numberOfPurchases + ";" + weekDay.name().toLowerCase() + ";" + Format.format(getCost()) + ";" + discountPercentage;
+        return numberOfPurchases + ";" + weekDay.name().toLowerCase() + ";"
+                + Format.format(getCost()) + ";" + discountPercentage;
     }
 
 }
