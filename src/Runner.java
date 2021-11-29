@@ -24,7 +24,7 @@ public class Runner {
             lookArray(purchases);
             double averageCost = 0.00;
             int mondayCost = 0;
-            String maxday = null;
+            String maxDay = null;
             for (Purchase purchase : purchases) {
                 averageCost += purchase.getCost();
                 if (purchase.getWeekDay() == WeekDay.MONDAY) {
@@ -33,7 +33,7 @@ public class Runner {
                 int maxPurchase = 0;
                 if (purchase.getNumberOfPurchases() > maxPurchase) {
                     maxPurchase = purchase.getNumberOfPurchases();
-                    maxday = purchase.getWeekDay().toString();
+                    maxDay = purchase.getWeekDay().toString();
                 }
             }
 
@@ -44,7 +44,7 @@ public class Runner {
                 System.out.println(Format.format2(averageCost));
             }
             System.out.println("Monday's purchases = " + Format.format(mondayCost)
-                    + ";\n" + "Max purchases day: " + maxday);
+                    + ";\n" + "Max purchases day: " + maxDay);
             lookArray(purchases);
             Arrays.sort(purchases);
             int index = Arrays.binarySearch(purchases, new Purchase(null, 5, 2));
