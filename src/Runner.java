@@ -1,9 +1,11 @@
 package by.gsu.epamlab;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
+
 public class Runner {
     public static void main(String[] args) {
         try (Scanner sc = new Scanner(new FileReader("src/in.txt"))) {
@@ -16,7 +18,7 @@ public class Runner {
             lookArray(purchases);
             double averageCost = 0.00;
             int mondayCost = 0;
-            WeekDay maxDay=null;
+            WeekDay maxDay = null;
             int maxPurchase = 0;
             for (Purchase purchase : purchases) {
                 int cost = purchase.getCost();
@@ -31,10 +33,10 @@ public class Runner {
                 }
             }
 
-            if (PURCHASES_NUMBER >0) {
-                System.out.printf("Average cost = %.3f\n",averageCost/PURCHASES_NUMBER/100);}
-            else {
-                System.out.printf("AverageCost = %.3f\n",averageCost/100);
+            if (PURCHASES_NUMBER > 0) {
+                System.out.printf("Average cost = %.3f\n", averageCost / PURCHASES_NUMBER / 100);
+            } else {
+                System.out.printf("AverageCost = %.3f\n", averageCost / 100);
             }
             System.out.println("Monday's purchases = " + Format.format(mondayCost)
                     + ";\n" + "Max purchases day: " + maxDay);
