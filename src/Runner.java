@@ -1,13 +1,9 @@
 package by.gsu.epamlab;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
-
-import by.gsu.epamlab.Format;
-
 public class Runner {
     public static void main(String[] args) {
         try (Scanner sc = new Scanner(new FileReader("src/in.txt"))) {
@@ -15,38 +11,41 @@ public class Runner {
             final int PURCHASES_NUMBER = sc.nextInt();
             Purchase[] purchases = new Purchase[PURCHASES_NUMBER];
             for (int i = 0; i < PURCHASES_NUMBER; i++) {
-                int days = sc.nextInt();
-                int number = sc.nextInt();
-                double discount = sc.nextDouble();
-                WeekDay WDay = WeekDay.values()[days];
-                purchases[i] = new Purchase(WDay, number, discount);
+                //int days = sc.nextInt();
+                // int number = sc.nextInt();
+                // double discount = sc.nextDouble();
+                //WeekDay WDay = WeekDay.values()[days];
+                //purchases[i] = new Purchase(WDay, number, discount);
+                purchases[i] = {new Purchase(WeekDay.values()[day], sc.nextInt(), sc.nextInt(), sc.nextDouble());}
             }
             lookArray(purchases);
             double averageCost = 0.00;
             int mondayCost = 0;
-            String maxDay = null;
+            //String maxday = null;
+            WeekDay maxday=null;
             for (Purchase purchase : purchases) {
-                averageCost += purchase.getCost();
-                if (purchase.getWeekDay() == WeekDay.MONDAY) {
-                    mondayCost += purchase.getCost();
-                }
+                int cost = purchase.getCost();
+                averageCost += cost;
                 int maxPurchase = 0;
-                if (purchase.getNumberOfPurchases() > maxPurchase) {
-                    maxPurchase = purchase.getNumberOfPurchases();
-                    maxDay = purchase.getWeekDay().toString();
+                if (purchase.getWeekDay() == WeekDay.MONDAY) {
+                    mondayCost += cost;
+                }
+                if (purchase.getCost() > maxPurchase) {
+                    maxPurchase = purchase.getCost();
+                    maxday = purchase.getWeekDay().toString();
                 }
             }
 
-            if (PURCHASES_NUMBER > 0) {
-                System.out.println("Average cost = "
-                        + Format.format2(averageCost / PURCHASES_NUMBER));
-            } else {
-                System.out.println(Format.format2(averageCost));
+            if (PURCHASES_NUMBER >0) {
+                System.out.printf("Average cost = %3f\n",averageCost/PURCHASES_NUMBER);}
+            else {
+                System.out.printf("AverageCost = %3f\n",averageCost);
             }
             System.out.println("Monday's purchases = " + Format.format(mondayCost)
-                    + ";\n" + "Max purchases day: " + maxDay);
-            lookArray(purchases);
+                    + ";\n" + "Max purchases day: " + maxday);
             Arrays.sort(purchases);
+            lookArray(purchases);
+
             int index = Arrays.binarySearch(purchases, new Purchase(null, 5, 2));
             if (index < 0) {
                 System.out.println("Item not found");

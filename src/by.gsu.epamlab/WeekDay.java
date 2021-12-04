@@ -7,5 +7,9 @@ public enum WeekDay {
     WEDNESDAY,
     THURSDAY,
     FRIDAY,
-    SATURDAY
+    SATURDAY;
+    @Override
+    public String toString() {
+        return name().toLowerCase();
+    }
 }
