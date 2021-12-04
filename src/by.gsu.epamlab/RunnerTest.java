@@ -25,7 +25,7 @@ public class RunnerTest {
     @Test
     public void testPurchaseInit() {
         Purchase p3 = new Purchase(WeekDay.MONDAY, 79, 15.0);
-        Assert.assertEquals(p3.toString(), "79;monday;517.00;15.0");
+        Assert.assertEquals(p3.toString(),"79;monday;517.00;15.0");
     }
 }
 //конструктор: а) равенство экземпляра, инициализированного через вторичный конструктор, с тем, что создан через первичный конструктор;

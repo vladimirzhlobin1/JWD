@@ -46,7 +46,7 @@ public class Purchase implements Comparable<Purchase> {
 
     public int getCost() {
         return (int) Math.round((PRICE * numberOfPurchases
-                * (100.0 - discountPercentage) / 100) * 0.01) * 100;
+                * (100.0 - discountPercentage)/ 100) * 0.01) * 100;
     }
 
     @Override

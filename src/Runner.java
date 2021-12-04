@@ -38,7 +38,7 @@ public class Runner {
             } else {
                 System.out.printf("AverageCost = %.3f\n", averageCost / 100);
             }
-            System.out.println("Monday's purchases = " + Format.format(mondayCost)
+            System.out.println("Monday's purchases= " + Format.format(mondayCost)
                     + ";\n" + "Max purchases day: " + maxDay);
             Arrays.sort(purchases);
             lookArray(purchases);
