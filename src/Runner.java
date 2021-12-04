@@ -11,42 +11,38 @@ public class Runner {
             final int PURCHASES_NUMBER = sc.nextInt();
             Purchase[] purchases = new Purchase[PURCHASES_NUMBER];
             for (int i = 0; i < PURCHASES_NUMBER; i++) {
-                //int days = sc.nextInt();
-                // int number = sc.nextInt();
-                // double discount = sc.nextDouble();
-                //WeekDay WDay = WeekDay.values()[days];
-                //purchases[i] = new Purchase(WDay, number, discount);
-                purchases[i] = {new Purchase(WeekDay.values()[day], sc.nextInt(), sc.nextInt(), sc.nextDouble());}
+                purchases[i] = new Purchase(sc.nextInt(), sc.nextInt(), sc.nextDouble());
             }
             lookArray(purchases);
             double averageCost = 0.00;
             int mondayCost = 0;
-            //String maxday = null;
-            WeekDay maxday=null;
+            WeekDay maxDay=null;
+            int maxPurchase = 0;
             for (Purchase purchase : purchases) {
                 int cost = purchase.getCost();
                 averageCost += cost;
-                int maxPurchase = 0;
+
                 if (purchase.getWeekDay() == WeekDay.MONDAY) {
                     mondayCost += cost;
                 }
                 if (purchase.getCost() > maxPurchase) {
                     maxPurchase = purchase.getCost();
-                    maxday = purchase.getWeekDay().toString();
+                    maxDay = purchase.getWeekDay();
                 }
             }
 
             if (PURCHASES_NUMBER >0) {
-                System.out.printf("Average cost = %3f\n",averageCost/PURCHASES_NUMBER);}
+                System.out.printf("Average cost = %.3f\n",averageCost/PURCHASES_NUMBER/100);}
             else {
-                System.out.printf("AverageCost = %3f\n",averageCost);
+                System.out.printf("AverageCost = %.3f\n",averageCost/100);
             }
             System.out.println("Monday's purchases = " + Format.format(mondayCost)
-                    + ";\n" + "Max purchases day: " + maxday);
+                    + ";\n" + "Max purchases day: " + maxDay);
             Arrays.sort(purchases);
             lookArray(purchases);
 
-            int index = Arrays.binarySearch(purchases, new Purchase(null, 5, 2));
+            int index = Arrays.binarySearch(purchases,
+                    new Purchase(null, 5, 2));
             if (index < 0) {
                 System.out.println("Item not found");
             } else {
