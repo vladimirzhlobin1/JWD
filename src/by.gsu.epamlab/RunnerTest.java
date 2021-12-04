@@ -2,6 +2,7 @@ package by.gsu.epamlab;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class RunnerTest {
     @Test
@@ -22,13 +23,15 @@ public class RunnerTest {
         Assert.assertEquals("1005.00", Format.format(100500));
     }
 
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void irregularNumberINDayID() {
+        Purchase p1 = new Purchase(12, 2, 5.00);
+        Purchase p2 = new Purchase(-1, 2, 5.00);
+    }
+
     @Test
     public void testPurchaseInit() {
         Purchase p3 = new Purchase(WeekDay.MONDAY, 79, 15.0);
-        Assert.assertEquals(p3.toString(),"79;monday;517.00;15.0");
+        Assert.assertEquals(p3.toString(), "79;15.0;monday;517.00");
     }
 }
-//конструктор: а) равенство экземпляра, инициализированного через вторичный конструктор, с тем, что создан через первичный конструктор;
-//б) выброс исключения, если во вторичный конструктор для дня недели передано неправильное число.
-//метод строкового представления финансовой величины, выраженной в копейках: 350, 305, 300, 5, 0, 100500 копеек.
-
