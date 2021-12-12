@@ -1,7 +1,7 @@
 package by.epam.lab;
 import java.util.Scanner;
 public class Purchases {
-	protected String productName;
+    protected String productName;
     protected Byn price;
     protected int number;
 
@@ -20,7 +20,7 @@ public class Purchases {
         this.number = sc.nextInt();
     }
     public Byn getCost() {
-        return new Byn(price.getcostOfObject() * number);
+        return new Byn(price.costOfObject * number);
     }
 
     protected String classFieldsToString() {
@@ -39,7 +39,7 @@ public class Purchases {
         Purchases purchase = (Purchases) o;
 
         return productName.equals(purchase.productName) &&
-                price.getcostOfObject()== purchase.price.getcostOfObject();
+                price.costOfObject== purchase.price.costOfObject;
     }
 
 }

@@ -19,13 +19,14 @@ public class Runner {
             sc = new Scanner(new FileReader(FILE_PATH));
             sc.useLocale(Locale.ENGLISH);
             Purchases[] purchases = new Purchases[6];
-            int maxElement = 0;
+            int maxElement=0;
             int maxCost = 0;
             boolean elementEqual = true;
-            for (int i = 0; i < purchases.length; i++) {
+            int lENGTH = purchases.length;
+            for (int i = 0; i < lENGTH; i++) {
                 purchases[i] = PurchasesGet.getPurchase(sc);
                 System.out.println(purchases[i]);
-                int cost = purchases[i].getCost().getcostOfObject();
+                int cost = purchases[i].getCost().costOfObject;
                 if (maxCost < cost) {
                     maxCost = cost;
                     maxElement = i;

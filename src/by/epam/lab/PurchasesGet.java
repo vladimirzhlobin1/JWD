@@ -1,8 +1,8 @@
 package by.epam.lab;
 import java.util.Scanner;
 public class PurchasesGet {
-    private static enum PurchaseType {
-    	
+    private enum PurchaseType {
+
         GENERAL_PURCHASE, PRICE_DISCOUNT_OF_PURCHASE,NUMBER_DISCOUNT_PURCHASE
     }
     public static Purchases getPurchase(Scanner sc) {
@@ -11,12 +11,12 @@ public class PurchasesGet {
         switch(type) {
             case GENERAL_PURCHASE :
                 return new Purchases(sc);
-			case PRICE_DISCOUNT_OF_PURCHASE :
-			    return new DiscountPurchases(sc);
-			case NUMBER_DISCOUNT_PURCHASE :
-			    return new QuantityDiscountPurchases(sc);
+            case PRICE_DISCOUNT_OF_PURCHASE :
+                return new DiscountPurchases(sc);
+            case NUMBER_DISCOUNT_PURCHASE :
+                return new QuantityDiscountPurchases(sc);
             default :
-            throw new IllegalArgumentException();
+                throw new IllegalArgumentException();
         }
     }
 }

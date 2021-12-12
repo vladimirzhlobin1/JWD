@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class QuantityDiscountPurchases extends Purchases {
 
     private double percentDiscount;
-    private static int NUMBER_WITH_DISCOUNT = 10;
+    private final static int NUMBER_WITH_DISCOUNT = 10;
 
     public QuantityDiscountPurchases() {}
 
@@ -21,13 +21,13 @@ public class QuantityDiscountPurchases extends Purchases {
 
     @Override
     protected String classFieldsToString() {
-        return ";" + percentDiscount;
+        return super.classFieldsToString() +";" + percentDiscount;
     }
 
     @Override
     public Byn getCost() {
         if (NUMBER_WITH_DISCOUNT < number) {
-            return new Byn((int) Math.round(price.getcostOfObject() *
+            return new Byn((int) Math.round(price.costOfObject *
                     number * (1.0 - percentDiscount / 100.0)));
         } else {
             return super.getCost();

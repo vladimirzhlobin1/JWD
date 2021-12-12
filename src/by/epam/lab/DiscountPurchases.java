@@ -21,11 +21,11 @@ public class DiscountPurchases extends Purchases {
 
     @Override
     protected String classFieldsToString() {
-        return ";" + priceWithDiscount;
+        return super.classFieldsToString() +";" + priceWithDiscount;
     }
 
     @Override
     public Byn getCost() {
-        return new Byn((price.getcostOfObject() - priceWithDiscount.getcostOfObject()) * number);
+        return new Byn((price.costOfObject - priceWithDiscount.costOfObject) * number);
     }
 }
