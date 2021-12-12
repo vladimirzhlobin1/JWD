@@ -1,0 +1,36 @@
+package by.epam.lab;
+
+import java.util.Scanner;
+
+public class QuantityDiscountPurchases extends Purchases {
+
+    private double percentDiscount;
+    private static int NUMBER_WITH_DISCOUNT = 10;
+
+    public QuantityDiscountPurchases() {}
+
+    public QuantityDiscountPurchases(String productName, int price, int number, double percentOfDiscount) {
+        super(productName,price,number);
+        this.percentDiscount = percentOfDiscount;
+    }
+
+    public QuantityDiscountPurchases(Scanner sc) {
+        super(sc);
+        this.percentDiscount = sc.nextDouble();
+    }
+
+    @Override
+    protected String classFieldsToString() {
+        return ";" + percentDiscount;
+    }
+
+    @Override
+    public Byn getCost() {
+        if (NUMBER_WITH_DISCOUNT < number) {
+            return new Byn((int) Math.round(price.getcostOfObject() *
+                    number * (1.0 - percentDiscount / 100.0)));
+        } else {
+            return super.getCost();
+        }
+    }
+}
