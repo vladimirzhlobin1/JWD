@@ -1,9 +1,33 @@
 package by.epam.lab;
 import java.util.Scanner;
 public class Purchases {
-    protected String productName;
-    protected Byn price;
-    protected int number;
+    private String productName;
+    private Byn price;
+    private int number;
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public Byn getPrice() {
+        return price;
+    }
+
+    public void setPrice(Byn price) {
+        this.price = price;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
 
     public Purchases() {
     }
@@ -20,8 +44,9 @@ public class Purchases {
         this.number = sc.nextInt();
     }
     public Byn getCost() {
-        return new Byn(price.costOfObject * number);
+        return new Byn().add(price).mul(number);
     }
+
 
     protected String classFieldsToString() {
         return "";

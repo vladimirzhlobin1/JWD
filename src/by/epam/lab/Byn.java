@@ -15,12 +15,18 @@ public class Byn implements Comparable<Byn> {
 		this.costOfObject *= a;
 		return this;
 	}
+	public Byn mul(double a) {
+		this.costOfObject *= a;
+		return this;
+	}
 
 	public Byn() {
 	}
 
 	public Byn(int costOfObject) {
 		this.costOfObject = costOfObject;
+	}
+	public Byn(Byn price) {
 	}
 	public static String format(int a) {
 		return String.format("%d.%02d", a / 100, a % 100);

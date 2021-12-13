@@ -24,13 +24,12 @@ public class QuantityDiscountPurchases extends Purchases {
         return super.classFieldsToString() +";" + percentDiscount;
     }
 
+
     @Override
     public Byn getCost() {
-        if (NUMBER_WITH_DISCOUNT < number) {
-            return new Byn((int) Math.round(price.costOfObject *
-                    number * (1.0 - percentDiscount / 100.0)));
-        } else {
-            return super.getCost();
+        if (NUMBER_WITH_DISCOUNT < getNumber()) {
+            new Byn().mul(1.0 - percentDiscount / 100.0);
         }
+        return super.getCost();
     }
 }

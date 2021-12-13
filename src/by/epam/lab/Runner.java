@@ -12,7 +12,6 @@ public class Runner {
 
     public static void main(String[] args) {
 
-
         try (Scanner sc = new Scanner(new FileReader("in.txt"))){
             sc.useLocale(Locale.ENGLISH);
             Purchases[] purchases = new Purchases[6];
