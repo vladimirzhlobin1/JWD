@@ -9,9 +9,17 @@ public class DiscountPurchases extends Purchases {
     public DiscountPurchases() {
     }
 
-    public DiscountPurchases(String productName, int price, int number, int priceWithDiscount) {
+    public DiscountPurchases(String productName, Byn price, int number, int priceWithDiscount) {
         super(productName,price,number);
         this.priceWithDiscount = new Byn(priceWithDiscount);
+    }
+
+    public Byn getPriceWithDiscount() {
+        return priceWithDiscount;
+    }
+
+    public void setPriceWithDiscount(Byn priceWithDiscount) {
+        this.priceWithDiscount = priceWithDiscount;
     }
 
     public DiscountPurchases(Scanner sc) {
@@ -27,6 +35,6 @@ public class DiscountPurchases extends Purchases {
     @Override
     public Byn getCost() {
 
-        return new Byn().sub(priceWithDiscount).mul(getNumber());
+        return new Byn().add(getPrice()).sub(priceWithDiscount).mul(getNumber());
     }
 }

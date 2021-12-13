@@ -59,4 +59,5 @@ public class Byn implements Comparable<Byn> {
 	public int compareTo(Byn o) {
 		return costOfObject - o.costOfObject;
 	}
+
 }

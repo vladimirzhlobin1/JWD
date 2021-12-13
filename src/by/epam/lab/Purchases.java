@@ -32,7 +32,7 @@ public class Purchases {
     public Purchases() {
     }
 
-    public Purchases(String productName, int price, int number) {
+    public Purchases(String productName, Byn price, int number) {
         this.productName = productName;
         this.price = new Byn(price);
         this.number = number;
@@ -49,12 +49,12 @@ public class Purchases {
 
 
     protected String classFieldsToString() {
-        return "";
+        return productName + ";" + price + ";" + number;
     }
 
     @Override
     public String toString() {
-        return productName + ";" + price + ";" + number + classFieldsToString() + ";" + getCost();
+        return  classFieldsToString() + ";" + getCost();
     }
 
     @Override
