@@ -3,6 +3,19 @@ package by.epam.lab;
 public class Byn implements Comparable<Byn> {
 	public int costOfObject;
 
+	public Byn add(Byn byn) {
+		this.costOfObject += byn.costOfObject;
+		return this;
+	}
+	public Byn sub(Byn byn) {
+		this.costOfObject -= byn.costOfObject;
+		return this;
+	}
+	public Byn mul(int a) {
+		this.costOfObject *= a;
+		return this;
+	}
+
 	public Byn() {
 	}
 
@@ -11,6 +24,10 @@ public class Byn implements Comparable<Byn> {
 	}
 	public static String format(int a) {
 		return String.format("%d.%02d", a / 100, a % 100);
+	}
+	public Byn sum () {
+
+		return this;
 	}
 	@Override
 	public String toString() {
@@ -28,7 +45,6 @@ public class Byn implements Comparable<Byn> {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-
 		Byn other = (Byn) obj;
 		return costOfObject == other.costOfObject;
 	}

@@ -12,11 +12,8 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        final String FILE_PATH = "in.txt";
 
-        Scanner sc = null;
-        try {
-            sc = new Scanner(new FileReader(FILE_PATH));
+        try (Scanner sc = new Scanner(new FileReader("in.txt"))){
             sc.useLocale(Locale.ENGLISH);
             Purchases[] purchases = new Purchases[6];
             int maxElement=0;
@@ -44,10 +41,6 @@ public class Runner {
             }
         } catch (FileNotFoundException e) {
             System.err.println("Input file is not found");
-        } finally {
-            if (sc != null) {
-                sc.close();
-            }
         }
     }
 }
