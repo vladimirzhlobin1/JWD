@@ -1,17 +1,45 @@
-package by.gsu.epamlab;
+package by.epam.lab;
+
+import by.epam.lab.Byn;
+import by.epam.lab.DiscountPurchases;
+import by.epam.lab.Purchases;
+import by.epam.lab.PurchasesGet;
+import by.epam.lab.QuantityDiscountPurchases;
+import by.epam.lab.Runner;
 
 import static org.junit.Assert.assertEquals;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Locale;
+import java.util.Scanner;
 
 import org.junit.*;
 
 public class TestRunner {
 
     @Test
-    public void testGetcostOfObject() {
+    public void testBynMethodsAndConstructors() {
+        Byn expectedByn = new Byn(420);
+        Byn byn1 = new Byn(expectedByn);
+        Assert.assertEquals(byn1, expectedByn);
+        Byn expectedByn2 = new Byn(840);
+        Byn byn2 = new Byn(expectedByn2);
+        Assert.assertEquals(byn2, expectedByn2);
+    }
+
+    public Byn mainTest(Byn byn) {
+        byn.add(new Byn(200)).mul(4).sub(new Byn(40)).add(new Byn(80));
+        System.out.println(byn);
+        return byn;
+
+    }
+
+    @Test
+    public void testGetCostOfObject() {
         Byn byn = new Byn(454);
         Byn byn1 = new Byn(1816);
         Purchases p1 = new Purchases("Bread", byn, 4);
-        System.out.println(p1);
         Assert.assertEquals("Bread", byn1, p1.getCost());
     }
 
@@ -22,6 +50,22 @@ public class TestRunner {
         assertEquals(byn, byn2);
     }
 
+    public void testPurchaseGet() {
+        Purchases expectedPurchases = new Purchases("Milk", new Byn(140), 3);
+        Purchases purchase = mainPurchaseGetTest(new Purchases());
+        Assert.assertEquals(purchase, expectedPurchases);
+    }
+
+    public Purchases mainPurchaseGetTest(Purchases p) {
+        try (Scanner sc = new Scanner(new FileReader("in.txt"))) {
+            sc.useLocale(Locale.ENGLISH);
+            p = PurchasesGet.getPurchase(sc);
+        } catch (FileNotFoundException e) {
+            System.err.println("Input file is not found");
+        }
+        return p;
+    }
+
     @SuppressWarnings("unlikely-arg-type")
     @Test
     public void testMethodEquals() {
@@ -29,49 +73,7 @@ public class TestRunner {
         Purchases p1 = new Purchases("Bread", byn1, 4);
         Byn byn2 = new Byn(1816);
         Purchases p2 = new Purchases("Bread", byn2, 4);
-        equals(p1.equals(p2));
+        Assert.assertEquals(p1, p2);
     }
 
-    public void testPurchasesGet() {
-        DiscountPurchases dis = new DiscountPurchases();
-        Assert.
-    }
-
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void irregularNumberID() {
-        Purchases p1 = new Purchases();
-        Purchases p2 = new Purchases();
-    }
 }
-/*@Test 
-    public void testConstructors() {
-      Purchase p1 = new Purchase(1,2,12.00);
-      Purchase p2 = new Purchase(WeekDay.MONDAY,2,12.00);
-      Assert.assertEquals(p1.toString(),p2.toString());
-      Purchase p3 = new Purchase(5,0,25.12);
-      Purchase p4 = new Purchase(WeekDay.FRIDAY, 0,25.12);
-      Assert.assertEquals(p3.toString(),p4.toString());
-      
-    }
-
-    @Test
-    public void testToByn() {
-        Assert.assertEquals("2.05", Format.format(205));
-        Assert.assertEquals("3.05", Format.format(305));
-        Assert.assertEquals("3.00", Format.format(300));
-        Assert.assertEquals("2.05", Format.format(205));
-        Assert.assertEquals("0.00", Format.format(0));
-        Assert.assertEquals("1005.00", Format.format(100500));
-    }
-@Test (expected = ArrayIndexOutOfBoundsException.class )
-public void irregularNumberINDayID ( ) {
-  Purchase p1 = new Purchase(12,2,5.00);
-  Purchase p2 = new Purchase(-1,2,5.00);
-}
-    @Test
-    public void testPurchaseInit() {
-        Purchase p3 = new Purchase(WeekDay.MONDAY, 79, 15.0);
-        Assert.assertEquals(p3.toString(), "79;15.0;monday;517.00");
-    }
-}
-*/

@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Locale;
 import java.util.Scanner;
+import by.epam.lab.Purchases;
+import by.epam.lab.PurchasesGet;
 
 public class Runner {
 

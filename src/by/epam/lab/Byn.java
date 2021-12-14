@@ -11,6 +11,7 @@ public class Byn implements Comparable<Byn> {
     }
 
     public Byn(Byn price) {
+        this.costOfObject = price.costOfObject;
     }
 
     public Byn add(Byn byn) {
@@ -30,11 +31,6 @@ public class Byn implements Comparable<Byn> {
 
     public Byn mul(double a) {
         this.costOfObject *= Math.round(a);
-        return this;
-    }
-
-    public Byn sum() {
-
         return this;
     }
 
