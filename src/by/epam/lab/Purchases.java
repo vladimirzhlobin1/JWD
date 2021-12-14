@@ -5,6 +5,17 @@ public class Purchases {
     private Byn price;
     private int number;
 
+
+
+    public Purchases() {
+    }
+
+    public Purchases(String productName, Byn price, int number) {
+        this.productName = productName;
+        this.price = price;
+        this.number = number;
+    }
+
     public String getProductName() {
         return productName;
     }
@@ -29,20 +40,12 @@ public class Purchases {
         this.number = number;
     }
 
-    public Purchases() {
-    }
-
-    public Purchases(String productName, Byn price, int number) {
-        this.productName = productName;
-        this.price = new Byn(price);
-        this.number = number;
-    }
-
     public Purchases (Scanner sc) {
         this.productName = sc.next();
         this.price = new Byn(sc.nextInt());
         this.number = sc.nextInt();
     }
+
     public Byn getCost() {
         return new Byn().add(price).mul(number);
     }

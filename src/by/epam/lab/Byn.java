@@ -3,6 +3,14 @@ package by.epam.lab;
 public class Byn implements Comparable<Byn> {
 	public int costOfObject;
 
+	public Byn() {
+	}
+
+	public Byn(int costOfObject) {
+		this.costOfObject = costOfObject;
+	}
+	public Byn(Byn price) {
+	}
 	public Byn add(Byn byn) {
 		this.costOfObject += byn.costOfObject;
 		return this;
@@ -16,28 +24,17 @@ public class Byn implements Comparable<Byn> {
 		return this;
 	}
 	public Byn mul(double a) {
-		this.costOfObject *= a;
+		this.costOfObject *= Math.round(a);
 		return this;
 	}
 
-	public Byn() {
-	}
-
-	public Byn(int costOfObject) {
-		this.costOfObject = costOfObject;
-	}
-	public Byn(Byn price) {
-	}
-	public static String format(int a) {
-		return String.format("%d.%02d", a / 100, a % 100);
-	}
 	public Byn sum () {
 
 		return this;
 	}
 	@Override
 	public String toString() {
-		return "costOfObject = " + format(costOfObject);
+		return String.format("%d.%02d",costOfObject/100, costOfObject%100);
 	}
 
 	@Override
