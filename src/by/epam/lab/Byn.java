@@ -34,6 +34,11 @@ public class Byn implements Comparable<Byn> {
         return this;
     }
 
+    public Byn sum() {
+
+        return this;
+    }
+
     @Override
     public String toString() {
         return String.format("%d.%02d", costOfObject / 100, costOfObject % 100);
