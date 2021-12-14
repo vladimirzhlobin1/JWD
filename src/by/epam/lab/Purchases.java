@@ -4,9 +4,6 @@ public class Purchases {
     private String productName;
     private Byn price;
     private int number;
-
-
-
     public Purchases() {
     }
 
@@ -50,7 +47,6 @@ public class Purchases {
         return new Byn().add(price).mul(number);
     }
 
-
     protected String classFieldsToString() {
         return productName + ";" + price + ";" + number;
     }
@@ -62,12 +58,13 @@ public class Purchases {
 
     @Override
     public boolean equals(Object o) {
+        if(o == null)  return false;
         if (this == o) return true;
         if (!(o instanceof Purchases)) return false;
+
         Purchases purchase = (Purchases) o;
 
-        return productName.equals(purchase.productName) &&
-                price.costOfObject== purchase.price.costOfObject;
+        return price.equals(purchase.price) &&
+                productName.equals(purchase.productName);
     }
-
 }

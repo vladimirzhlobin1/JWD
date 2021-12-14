@@ -4,8 +4,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.*;
 
 public class TestRunner {
-  
-  
+
   @Test
   public void testGetcostOfObject() {
     Byn byn = new Byn(454);

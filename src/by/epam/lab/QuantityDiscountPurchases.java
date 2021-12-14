@@ -6,7 +6,6 @@ public class QuantityDiscountPurchases extends Purchases {
 
     private double percentDiscount;
 
-
     private final static int NUMBER_WITH_DISCOUNT = 10;
 
     public QuantityDiscountPurchases() {}
@@ -36,7 +35,7 @@ public class QuantityDiscountPurchases extends Purchases {
     @Override
     public Byn getCost() {
         if (NUMBER_WITH_DISCOUNT < getNumber()) {
-            new Byn().add(getPrice().mul(getNumber()).mul(1.0 - percentDiscount / 100.0));
+            new Byn().add(getPrice()).mul(getNumber()).mul(1.0 - percentDiscount / 100.0);
         }
         return super.getCost();
     }
