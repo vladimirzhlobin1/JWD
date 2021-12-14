@@ -1,43 +1,47 @@
 package by.gsu.epamlab;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.*;
 
 public class TestRunner {
 
-  @Test
-  public void testGetcostOfObject() {
-    Byn byn = new Byn(454);
-    Byn byn1 = new Byn(1816);
-          Purchases p1 = new Purchases("Bread",byn,4);
-          System.out.println(p1);
+    @Test
+    public void testGetcostOfObject() {
+        Byn byn = new Byn(454);
+        Byn byn1 = new Byn(1816);
+        Purchases p1 = new Purchases("Bread", byn, 4);
+        System.out.println(p1);
         Assert.assertEquals("Bread", byn1, p1.getCost());
-  }
-  @Test
-  public void testEqualsObject() {
-    Byn byn = new Byn(454);
-    Byn byn2 = new Byn(454);
-    assertEquals(byn, byn2);
-  }
+    }
 
-  @SuppressWarnings("unlikely-arg-type")
-  @Test
-  public void testMethodEquals() {
-    Byn byn1 = new Byn(1816);
-        Purchases p1 = new Purchases("Bread",byn1,4);
+    @Test
+    public void testEqualsObject() {
+        Byn byn = new Byn(454);
+        Byn byn2 = new Byn(454);
+        assertEquals(byn, byn2);
+    }
+
+    @SuppressWarnings("unlikely-arg-type")
+    @Test
+    public void testMethodEquals() {
+        Byn byn1 = new Byn(1816);
+        Purchases p1 = new Purchases("Bread", byn1, 4);
         Byn byn2 = new Byn(1816);
-        Purchases p2 = new Purchases("Bread",byn2,4);
+        Purchases p2 = new Purchases("Bread", byn2, 4);
         equals(p1.equals(p2));
-  }
-public void testPurchasesGet() {
-  DiscountPurchases dis = new DiscountPurchases();
-  Assert.
-}
-@Test (expected = ArrayIndexOutOfBoundsException.class )
-public void irregularNumberID ( ) {
-  Purchases p1 = new Purchases();
-  Purchases p2 = new Purchases();
-}
+    }
+
+    public void testPurchasesGet() {
+        DiscountPurchases dis = new DiscountPurchases();
+        Assert.
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void irregularNumberID() {
+        Purchases p1 = new Purchases();
+        Purchases p2 = new Purchases();
+    }
 }
 /*@Test 
     public void testConstructors() {

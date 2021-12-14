@@ -9,10 +9,10 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        try (Scanner sc = new Scanner(new FileReader("src/in.txt"))){
+        try (Scanner sc = new Scanner(new FileReader("src/in.txt"))) {
             sc.useLocale(Locale.ENGLISH);
             Purchases[] purchases = new Purchases[6];
-            int maxElement=0;
+            int maxElement = 0;
             int maxCost = 0;
             boolean elementEqual = true;
             int lenhth = purchases.length;
