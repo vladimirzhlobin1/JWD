@@ -4,22 +4,21 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Locale;
 import java.util.Scanner;
-import by.epam.lab.Purchases;
-import by.epam.lab.PurchasesGet;
 
 public class Runner {
 
     public static void main(String[] args) {
 
-        try (Scanner sc = new Scanner(new FileReader("src/in.txt"))) {
+        try (Scanner sc = new Scanner(new FileReader("in.txt"))){
             sc.useLocale(Locale.ENGLISH);
-            Purchases[] purchases = new Purchases[6];
-            int maxElement = 0;
+            final int PURCHASES_NUMBER = 6;
+            Purchases purchases[] = new Purchases[PURCHASES_NUMBER];
+            int maxElement=0;
             int maxCost = 0;
             boolean elementEqual = true;
             int lenhth = purchases.length;
             for (int i = 0; i < lenhth; i++) {
-                purchases[i] = PurchasesGet.getPurchase(sc);
+                purchases[i] = PurchasesGet.getPurchaseFromFactory(sc);//изменил метод из purchase get
                 System.out.println(purchases[i]);
                 int cost = purchases[i].getCost().costOfObject;
                 if (maxCost < cost) {

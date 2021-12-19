@@ -1,12 +1,9 @@
 package by.epam.lab;
-
 import java.util.Scanner;
-
 public class Purchases {
     private String productName;
     private Byn price;
     private int number;
-
     public Purchases() {
     }
 
@@ -40,11 +37,16 @@ public class Purchases {
         this.number = number;
     }
 
-    public Purchases(Scanner sc) {
+    public Purchases (Scanner sc) {
         this.productName = sc.next();
         this.price = new Byn(sc.nextInt());
         this.number = sc.nextInt();
     }
+    /*
+    public Purchases(Scanner sc) {
+        sc.next(); sc.nextInt(); sc.nextInt();
+    }*/
+
 
     public Byn getCost() {
         return new Byn().add(price).mul(number);
@@ -56,12 +58,12 @@ public class Purchases {
 
     @Override
     public String toString() {
-        return classFieldsToString() + ";" + getCost();
+        return  classFieldsToString() + ";" + getCost();
     }
 
     @Override
     public boolean equals(Object o) {
-        if (o == null) return false;
+        if(o == null)  return false;
         if (this == o) return true;
         if (!(o instanceof Purchases)) return false;
 
