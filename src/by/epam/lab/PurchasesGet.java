@@ -25,7 +25,6 @@ public class PurchasesGet {
     }
 
     public static Purchases getPurchaseFromFactory(Scanner sc) {
-        String id = sc.next();
-        return PurchaseType.valueOf(id).getPurchase(sc);
+        return PurchaseType.valueOf(sc.next()).getPurchase(sc);
     }
 }

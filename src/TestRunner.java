@@ -30,7 +30,6 @@ public class TestRunner {
 
     public Byn mainTest(Byn byn) {
         byn.add(new Byn(200)).mul(4).sub(new Byn(40)).add(new Byn(80));
-        System.out.println(byn);
         return byn;
 
     }
