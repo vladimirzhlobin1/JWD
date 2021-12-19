@@ -1,5 +1,7 @@
 package by.epam.lab;
 
+import java.util.Scanner;
+
 public class Byn implements Comparable<Byn> {
     public int costOfObject;
 
@@ -31,8 +33,8 @@ public class Byn implements Comparable<Byn> {
         this.costOfObject -= byn.costOfObject;
         return this;
     }
-    public Byn mul(int a) {
-        this.costOfObject *= a;
+    public Byn mul(double d) {
+        this.costOfObject *= d;
         return this;
     }
 
@@ -63,55 +65,13 @@ public class Byn implements Comparable<Byn> {
     public int compareTo(Byn o) {
         return costOfObject - o.costOfObject;
     }
-    public Byn mul(double k, Round round, int num) {
+    public Byn mul(double k, RoundMethod round, int num) {
         this.costOfObject = round.rounding(this.costOfObject * k, num);
         return this;
     }
 
-    public Byn mul(double k, int num) {
-        mul(k, Round.ROUND, num);
-        return this;
-    }
-
-    public Byn mul(double k) {
-        mul(k, Round.ROUND, 0);
-        return this;
-    }
-
-    public Byn mul(double k, Round round) {
-        mul(k, round, 0);
-        return this;
-    }
-
-    public Byn round(Round round) {
-        round(round,0);
-        return this;
-    }
-
-    public Byn round(int num) {
-        round(Round.ROUND,num);
-        return this;
-    }
-
-    public Byn round(Round round, int num) {
+    public Byn round(RoundMethod round, int num) {
         this.costOfObject = round.rounding(this.costOfObject, num);
         return this;
-    }
-
-    public static enum Round {
-
-        ROUND {
-            double roundFunction(double roundingCostOfObject) {
-                return Math.round(roundingCostOfObject);
-            }
-        };
-
-        abstract double roundFunction(double roundingCostOfObject);
-
-        private int[] ten = {1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000};
-
-        private int rounding(double roundingValue, int num) {
-            return (int) roundFunction(roundingValue / ten[num]) * ten[num];
-        }
     }
 }

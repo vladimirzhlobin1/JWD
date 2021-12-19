@@ -42,10 +42,6 @@ public class Purchases {
         this.price = new Byn(sc.nextInt());
         this.number = sc.nextInt();
     }
-    /*
-    public Purchases(Scanner sc) {
-        sc.next(); sc.nextInt(); sc.nextInt();
-    }*/
 
 
     public Byn getCost() {
