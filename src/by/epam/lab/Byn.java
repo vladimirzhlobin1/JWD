@@ -7,7 +7,9 @@ public class Byn implements Comparable<Byn> {
 
     public Byn() {
     }
-
+    public Byn(Scanner sc) {
+        this(sc.nextInt());
+    }
     public Byn(int costOfObject) {
         this.costOfObject = costOfObject;
     }

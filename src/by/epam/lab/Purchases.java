@@ -38,9 +38,7 @@ public class Purchases {
     }
 
     public Purchases (Scanner sc) {
-        this.productName = sc.next();
-        this.price = new Byn(sc.nextInt());
-        this.number = sc.nextInt();
+        this(sc.next(),new Byn(sc),sc.nextInt());
     }
 
 
