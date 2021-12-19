@@ -2,7 +2,7 @@ package by.epam.lab;
 
 import java.util.Scanner;
 
-public class DiscountPurchases extends Purchases {
+public class DiscountPurchases extends Purchase {
 
     private Byn priceWithDiscount;
 

@@ -2,7 +2,7 @@ package by.epam.lab;
 
 import by.epam.lab.Byn;
 import by.epam.lab.DiscountPurchases;
-import by.epam.lab.Purchases;
+import by.epam.lab.Purchase;
 import by.epam.lab.PurchasesGet;
 import by.epam.lab.QuantityDiscountPurchases;
 import by.epam.lab.Runner;
@@ -38,8 +38,16 @@ public class TestRunner {
     public void testGetCostOfObject() {
         Byn byn = new Byn(454);
         Byn byn1 = new Byn(1816);
-        Purchases p1 = new Purchases("Bread", byn, 4);
+        Purchase p1 = new Purchase("Bread", byn, 4);
         Assert.assertEquals("Bread", byn1, p1.getCost());
+    }
+
+    @Test
+    public void testGetCost() {
+        Purchase purchases = new Purchase("Milk", new Byn(140), 4);
+        Assert.assertEquals(new Byn(560), purchases.getCost());
+        purchases.getCost().mul(4);
+        Assert.assertEquals(new Byn(560), purchases.getCost());
     }
 
     @Test
@@ -50,15 +58,15 @@ public class TestRunner {
     }
 
     public void testPurchaseGet() {
-        Purchases expectedPurchases = new Purchases("Milk", new Byn(140), 3);
-        Purchases purchase = mainPurchaseGetTest(new Purchases());
+        Purchase expectedPurchases = new Purchase("Milk", new Byn(140), 3);
+        Purchase purchase = mainPurchaseGetTest(new Purchase());
         Assert.assertEquals(purchase, expectedPurchases);
     }
 
-    public Purchases mainPurchaseGetTest(Purchases p) {
+    public Purchase mainPurchaseGetTest(Purchase p) {
         try (Scanner sc = new Scanner(new FileReader("in.txt"))) {
             sc.useLocale(Locale.ENGLISH);
-            p = PurchasesGet.getPurchase(sc);
+            p = PurchasesGet.getPurchaseFromFactory(sc);
         } catch (FileNotFoundException e) {
             System.err.println("Input file is not found");
         }
@@ -69,9 +77,9 @@ public class TestRunner {
     @Test
     public void testMethodEquals() {
         Byn byn1 = new Byn(1816);
-        Purchases p1 = new Purchases("Bread", byn1, 4);
+        Purchase p1 = new Purchase("Bread", byn1, 4);
         Byn byn2 = new Byn(1816);
-        Purchases p2 = new Purchases("Bread", byn2, 4);
+        Purchase p2 = new Purchase("Bread", byn2, 4);
         Assert.assertEquals(p1, p2);
     }
 

@@ -6,25 +6,25 @@ public class PurchasesGet {
 
     private static enum PurchaseType {
         GENERAL_PURCHASE {
-            Purchases getPurchase(Scanner sc) {
-                return new Purchases(sc);
+            Purchase getPurchase(Scanner sc) {
+                return new Purchase(sc);
             }
         },
         PRICE_DISCOUNT_OF_PURCHASE {
-            Purchases getPurchase(Scanner sc) {
+            Purchase getPurchase(Scanner sc) {
                 return new DiscountPurchases(sc);
             }
         },
         NUMBER_DISCOUNT_PURCHASE {
-            Purchases getPurchase(Scanner sc) {
+            Purchase getPurchase(Scanner sc) {
                 return new QuantityDiscountPurchases(sc);
             }
         };
 
-        abstract Purchases getPurchase(Scanner sc);
+        abstract Purchase getPurchase(Scanner sc);
     }
 
-    public static Purchases getPurchaseFromFactory(Scanner sc) {
+    public static Purchase getPurchaseFromFactory(Scanner sc) {
         return PurchaseType.valueOf(sc.next()).getPurchase(sc);
     }
 }

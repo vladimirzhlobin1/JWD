@@ -2,7 +2,7 @@ package by.epam.lab;
 
 import java.util.Scanner;
 
-public class QuantityDiscountPurchases extends Purchases {
+public class QuantityDiscountPurchases extends Purchase {
 
     private double percentDiscount;
 

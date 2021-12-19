@@ -2,15 +2,15 @@ package by.epam.lab;
 
 import java.util.Scanner;
 
-public class Purchases {
+public class Purchase {
     private String productName;
     private Byn price;
     private int number;
 
-    public Purchases() {
+    public Purchase() {
     }
 
-    public Purchases(String productName, Byn price, int number) {
+    public Purchase(String productName, Byn price, int number) {
         this.productName = productName;
         this.price = price;
         this.number = number;
@@ -40,7 +40,7 @@ public class Purchases {
         this.number = number;
     }
 
-    public Purchases(Scanner sc) {
+    public Purchase(Scanner sc) {
         this(sc.next(), new Byn(sc), sc.nextInt());
     }
 
@@ -61,9 +61,9 @@ public class Purchases {
     public boolean equals(Object o) {
         if (o == null) return false;
         if (this == o) return true;
-        if (!(o instanceof Purchases)) return false;
+        if (!(o instanceof Purchase)) return false;
 
-        Purchases purchase = (Purchases) o;
+        Purchase purchase = (Purchase) o;
 
         return price.equals(purchase.price) &&
                 productName.equals(purchase.productName);

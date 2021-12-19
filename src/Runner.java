@@ -12,7 +12,7 @@ public class Runner {
         try (Scanner sc = new Scanner(new FileReader("in.txt"))) {
             sc.useLocale(Locale.ENGLISH);
             final int PURCHASES_NUMBER = 6;
-            Purchases purchases[] = new Purchases[PURCHASES_NUMBER];
+            Purchase purchases[] = new Purchase[PURCHASES_NUMBER];
             int maxElement = 0;
             Byn maxCost = new Byn();
             boolean elementEqual = true;
