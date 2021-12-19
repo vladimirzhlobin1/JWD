@@ -14,14 +14,14 @@ public class Runner {
             final int PURCHASES_NUMBER = 6;
             Purchases purchases[] = new Purchases[PURCHASES_NUMBER];
             int maxElement = 0;
-            int maxCost = 0;
+            Byn maxCost = new Byn();
             boolean elementEqual = true;
             int lenhth = purchases.length;
             for (int i = 0; i < lenhth; i++) {
                 purchases[i] = PurchasesGet.getPurchaseFromFactory(sc);
                 System.out.println(purchases[i]);
-                int cost = purchases[i].getCost().costOfObject;
-                if (maxCost < cost) {
+                Byn cost = purchases[i].getCost();
+                if (maxCost.compareTo(cost) < 0) {
                     maxCost = cost;
                     maxElement = i;
                 }

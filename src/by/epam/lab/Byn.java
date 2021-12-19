@@ -3,7 +3,7 @@ package by.epam.lab;
 import java.util.Scanner;
 
 public class Byn implements Comparable<Byn> {
-    public int costOfObject;
+    private int costOfObject;
 
     public Byn() {
     }
