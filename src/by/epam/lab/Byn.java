@@ -7,15 +7,19 @@ public class Byn implements Comparable<Byn> {
 
     public Byn() {
     }
+
     public Byn(Scanner sc) {
         this(sc.nextInt());
     }
+
     public Byn(int costOfObject) {
         this.costOfObject = costOfObject;
     }
-    public Byn (int rub, int coins) {
+
+    public Byn(int rub, int coins) {
         this(rub * 100 + coins);
     }
+
     public int getRub() {
         return this.costOfObject / 100;
     }
@@ -27,25 +31,29 @@ public class Byn implements Comparable<Byn> {
     public Byn(Byn price) {
         this.costOfObject = price.costOfObject;
     }
+
     public Byn add(Byn byn) {
         this.costOfObject += byn.costOfObject;
         return this;
     }
+
     public Byn sub(Byn byn) {
         this.costOfObject -= byn.costOfObject;
         return this;
     }
+
     public Byn mul(double d) {
         this.costOfObject *= d;
         return this;
     }
 
-    public Byn sum () {
+    public Byn sum() {
         return this;
     }
+
     @Override
     public String toString() {
-        return String.format("%d.%02d",costOfObject/100, costOfObject%100);
+        return String.format("%d.%02d", costOfObject / 100, costOfObject % 100);
     }
 
     @Override
@@ -67,13 +75,14 @@ public class Byn implements Comparable<Byn> {
     public int compareTo(Byn o) {
         return costOfObject - o.costOfObject;
     }
+
     public Byn mul(double k, RoundMethod round, int num) {
-        this.costOfObject = round.rounding(this.costOfObject * k, num);
+        costOfObject = round.rounding(costOfObject * k, num);
         return this;
     }
 
     public Byn round(RoundMethod round, int num) {
-        this.costOfObject = round.rounding(this.costOfObject, num);
+        costOfObject = round.rounding(costOfObject, num);
         return this;
     }
 }

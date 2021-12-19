@@ -8,10 +8,11 @@ public class QuantityDiscountPurchases extends Purchases {
 
     private final static int NUMBER_WITH_DISCOUNT = 10;
 
-    public QuantityDiscountPurchases() {}
+    public QuantityDiscountPurchases() {
+    }
 
     public QuantityDiscountPurchases(String productName, Byn price, int number, double percentOfDiscount) {
-        super(productName,price,number);
+        super(productName, price, number);
         this.percentDiscount = percentOfDiscount;
     }
 
@@ -19,6 +20,7 @@ public class QuantityDiscountPurchases extends Purchases {
         super(sc);
         this.percentDiscount = sc.nextDouble();
     }
+
     public double getPercentDiscount() {
         return percentDiscount;
     }
@@ -29,13 +31,13 @@ public class QuantityDiscountPurchases extends Purchases {
 
     @Override
     protected String classFieldsToString() {
-        return super.classFieldsToString() +";" + percentDiscount;
+        return super.classFieldsToString() + ";" + percentDiscount;
     }
 
     @Override
     public Byn getCost() {
         if (NUMBER_WITH_DISCOUNT < getNumber()) {
-            new Byn().add(getPrice()).mul(getNumber()).mul(1.0 - percentDiscount / 100.0);
+            new Byn().add(super.getCost()).mul(1.0 - percentDiscount / 100.0, RoundMethod.ROUND, 0);
         }
         return super.getCost();
     }

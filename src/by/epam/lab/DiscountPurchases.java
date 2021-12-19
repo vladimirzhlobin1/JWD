@@ -10,7 +10,7 @@ public class DiscountPurchases extends Purchases {
     }
 
     public DiscountPurchases(String productName, Byn price, int number, int priceWithDiscount) {
-        super(productName,price,number);
+        super(productName, price, number);
         this.priceWithDiscount = new Byn(priceWithDiscount);
     }
 
@@ -24,12 +24,12 @@ public class DiscountPurchases extends Purchases {
 
     public DiscountPurchases(Scanner sc) {
         super(sc);
-        this.priceWithDiscount = new Byn(sc.nextInt());
+        this.priceWithDiscount = new Byn(sc);
     }
 
     @Override
     protected String classFieldsToString() {
-        return super.classFieldsToString() +";" + priceWithDiscount;
+        return super.classFieldsToString() + ";" + priceWithDiscount;
     }
 
     @Override
