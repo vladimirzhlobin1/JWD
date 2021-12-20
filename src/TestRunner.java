@@ -27,7 +27,7 @@ public class TestRunner {
         Byn byn2 = new Byn(expectedByn2);
         Assert.assertEquals(byn2, expectedByn2);
     }
-
+    @Test
     public Byn mainTest(Byn byn) {
         byn.add(new Byn(200)).mul(4).sub(new Byn(40)).add(new Byn(80));
         return byn;
@@ -56,13 +56,13 @@ public class TestRunner {
         Byn byn2 = new Byn(454);
         assertEquals(byn, byn2);
     }
-
+    @Test
     public void testPurchaseGet() {
         Purchase expectedPurchases = new Purchase("Milk", new Byn(140), 3);
         Purchase purchase = mainPurchaseGetTest(new Purchase());
         Assert.assertEquals(purchase,  expectedPurchases);
     }
-
+    @Test
     public Purchase mainPurchaseGetTest(Purchase p) {
         try (Scanner sc = new Scanner(new FileReader("src/in.txt"))) {
             sc.useLocale(Locale.ENGLISH);
@@ -73,7 +73,6 @@ public class TestRunner {
         return p;
     }
 
-    @SuppressWarnings("unlikely-arg-type")
     @Test
     public void testMethodEquals() {
         Byn byn1 = new Byn(1816);
