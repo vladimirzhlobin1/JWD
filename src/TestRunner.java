@@ -29,7 +29,22 @@ public class TestRunner {
     }
 
     @Test
-    public void BynmethodTest(Byn byn) {
+    public void mainPurchaseGetTest() {
+        String scannerLineGeneralPurchase = "GENERAL_PURCHASE Milk 140 3";
+        Scanner sc1 = new Scanner(scannerLineGeneralPurchase);
+        Purchase purchase = PurchasesGet.getPurchaseFromFactory(sc1);
+        Assert.assertEquals(purchase,
+                new Purchase("Milk", new Byn(140), 3));
+        String scannerLineNumberDiscountPurchase = "PRICE_DISCOUNT_OF_PURCHASE Bread 140 9 34";
+        Scanner sc2 = new Scanner(scannerLineNumberDiscountPurchase);
+        Purchase discountPurchase = PurchasesGet.getPurchaseFromFactory(sc2);
+        Assert.assertEquals(discountPurchase.toString(),
+                new DiscountPurchases("Bread",
+                        new Byn(140), 9, 34).toString());
+    }
+
+    @Test
+    public void bynMethodTest() {
         Byn byn1 = new Byn();
         Assert.assertEquals(byn1, new Byn(0));
         byn1.add(new Byn(200)).mul(4).sub(new Byn(40)).add(new Byn(80));
@@ -57,24 +72,6 @@ public class TestRunner {
         Byn byn = new Byn(454);
         Byn byn2 = new Byn(454);
         assertEquals(byn, byn2);
-    }
-
-    @Test
-    public void testPurchaseGet() {
-        Purchase expectedPurchases = new Purchase("Milk", new Byn(140), 3);
-        Purchase purchase = mainPurchaseGetTest(new Purchase());
-        Assert.assertEquals(purchase, expectedPurchases);
-    }
-
-    @Test
-    public Purchase mainPurchaseGetTest(Purchase p) {
-        try (Scanner sc = new Scanner(new FileReader("src/in.txt"))) {
-            sc.useLocale(Locale.ENGLISH);
-            p = PurchasesGet.getPurchaseFromFactory(sc);
-        } catch (FileNotFoundException e) {
-            System.err.println("Input file is not found");
-        }
-        return p;
     }
 
     @Test

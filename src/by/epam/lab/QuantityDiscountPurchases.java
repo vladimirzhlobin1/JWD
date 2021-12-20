@@ -36,9 +36,10 @@ public class QuantityDiscountPurchases extends Purchase {
 
     @Override
     public Byn getCost() {
+        Byn requiredByn = super.getCost();
         if (NUMBER_WITH_DISCOUNT < getNumber()) {
-            new Byn(super.getCost()).mul(1.0 - percentDiscount / 100.0, RoundMethod.ROUND, 0);
+            requiredByn.mul(1.0 - percentDiscount / 100.0, RoundMethod.ROUND, 0);
         }
-        return super.getCost();
+        return requiredByn;
     }
 }

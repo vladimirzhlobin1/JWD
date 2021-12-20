@@ -42,7 +42,7 @@ public class Byn implements Comparable<Byn> {
         return this;
     }
 
-    public Byn mul(double d) {
+    public Byn mul(int d) {
         this.costOfObject *= d;
         return this;
     }
