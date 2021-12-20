@@ -27,11 +27,13 @@ public class TestRunner {
         Byn byn2 = new Byn(expectedByn2);
         Assert.assertEquals(byn2, expectedByn2);
     }
-    @Test
-    public Byn mainTest(Byn byn) {
-        byn.add(new Byn(200)).mul(4).sub(new Byn(40)).add(new Byn(80));
-        return byn;
 
+    @Test
+    public void BynmethodTest(Byn byn) {
+        Byn byn1 = new Byn();
+        Assert.assertEquals(byn1, new Byn(0));
+        byn1.add(new Byn(200)).mul(4).sub(new Byn(40)).add(new Byn(80));
+        Assert.assertEquals(byn1, new Byn(840));
     }
 
     @Test
@@ -56,12 +58,14 @@ public class TestRunner {
         Byn byn2 = new Byn(454);
         assertEquals(byn, byn2);
     }
+
     @Test
     public void testPurchaseGet() {
         Purchase expectedPurchases = new Purchase("Milk", new Byn(140), 3);
         Purchase purchase = mainPurchaseGetTest(new Purchase());
-        Assert.assertEquals(purchase,  expectedPurchases);
+        Assert.assertEquals(purchase, expectedPurchases);
     }
+
     @Test
     public Purchase mainPurchaseGetTest(Purchase p) {
         try (Scanner sc = new Scanner(new FileReader("src/in.txt"))) {
