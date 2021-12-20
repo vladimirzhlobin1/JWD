@@ -55,8 +55,8 @@ public class TestRunner {
     public void testGetCostOfObject() {
         Byn byn = new Byn(454);
         Byn byn1 = new Byn(1816);
-        Purchase p1 = new Purchase("Bread", byn, 4);
-        Assert.assertEquals("Bread", byn1, p1.getCost());
+        Purchase p1 = new Purchase("Bread",byn,4);
+        Assert.assertEquals(byn1, p1.getCost());
     }
 
     @Test

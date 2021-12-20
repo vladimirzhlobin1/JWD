@@ -29,7 +29,7 @@ public class Byn implements Comparable<Byn> {
     }
 
     public Byn(Byn byn) {
-        this.costOfObject = byn.costOfObject;
+        this(byn.costOfObject);
     }
 
     public Byn add(Byn byn) {
@@ -39,11 +39,6 @@ public class Byn implements Comparable<Byn> {
 
     public Byn sub(Byn byn) {
         this.costOfObject -= byn.costOfObject;
-        return this;
-    }
-
-    public Byn mul(int d) {
-        this.costOfObject *= d;
         return this;
     }
 
@@ -81,4 +76,10 @@ public class Byn implements Comparable<Byn> {
         costOfObject = round.rounding(costOfObject, num);
         return this;
     }
+
+    public Byn mul(int d) {
+        this.costOfObject *= d;
+        return this;
+    }
+
 }

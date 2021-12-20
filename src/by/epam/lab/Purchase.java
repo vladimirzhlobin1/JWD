@@ -16,6 +16,13 @@ public class Purchase {
         this.number = number;
     }
 
+    public Purchase(Scanner sc) {
+        this.productName = sc.next();
+        this.price = new Byn(sc);
+        this.number = sc.nextInt();
+    }
+
+
     public String getProductName() {
         return productName;
     }
@@ -38,12 +45,6 @@ public class Purchase {
 
     public void setNumber(int number) {
         this.number = number;
-    }
-
-    public Purchase(Scanner sc) {
-        this.productName = sc.next();
-        this.price = new Byn(sc);
-        this.number = sc.nextInt();
     }
 
     public Byn getCost() {
