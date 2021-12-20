@@ -9,7 +9,7 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        try (Scanner sc = new Scanner(new FileReader("in.txt"))) {
+        try (Scanner sc = new Scanner(new FileReader("src/in.txt"))) {
             sc.useLocale(Locale.ENGLISH);
             final int PURCHASES_NUMBER = 6;
             Purchase purchases[] = new Purchase[PURCHASES_NUMBER];

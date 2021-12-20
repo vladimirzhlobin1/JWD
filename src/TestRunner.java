@@ -60,11 +60,11 @@ public class TestRunner {
     public void testPurchaseGet() {
         Purchase expectedPurchases = new Purchase("Milk", new Byn(140), 3);
         Purchase purchase = mainPurchaseGetTest(new Purchase());
-        Assert.assertEquals(purchase, expectedPurchases);
+        Assert.assertEquals(purchase,  expectedPurchases);
     }
 
     public Purchase mainPurchaseGetTest(Purchase p) {
-        try (Scanner sc = new Scanner(new FileReader("in.txt"))) {
+        try (Scanner sc = new Scanner(new FileReader("src/in.txt"))) {
             sc.useLocale(Locale.ENGLISH);
             p = PurchasesGet.getPurchaseFromFactory(sc);
         } catch (FileNotFoundException e) {

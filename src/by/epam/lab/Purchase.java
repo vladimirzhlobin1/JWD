@@ -41,11 +41,13 @@ public class Purchase {
     }
 
     public Purchase(Scanner sc) {
-        this(sc.next(), new Byn(sc), sc.nextInt());
+        this.productName = sc.next();
+        this.price = new Byn(sc);
+        this.number = sc.nextInt();
     }
 
     public Byn getCost() {
-        return new Byn().add(price).mul(number);
+        return new Byn(price).mul(number);
     }
 
     protected String classFieldsToString() {
