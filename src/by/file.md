@@ -397,7 +397,7 @@ Valdemar Zhlobinski, [07.01.2022 21:40]
 Что означает ключевое слово final в следующих конструкциях?
 1.
 public final class SomeClass() { }
-от этого класса нельзя наследоваться
+от этого класса  нельзя наследоваться
 2.
 public class SomeClass() {
 public final void doSmth();
