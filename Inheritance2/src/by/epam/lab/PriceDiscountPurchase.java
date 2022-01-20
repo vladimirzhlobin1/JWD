@@ -1,8 +1,10 @@
+package Inheritance2;
+
 public class PriceDiscountPurchase extends AbstractPurchase {
-    private final Byn priceDiscount;
+    private int priceDiscount;
     public PriceDiscountPurchase(Product product, int numberUnits, int priceDiscount) {
         super(product, numberUnits);
-        this.priceDiscount = new Byn(priceDiscount);
+        this.priceDiscount = priceDiscount;
     }
     @Override
     protected String fieldsToString() {
@@ -11,4 +13,7 @@ public class PriceDiscountPurchase extends AbstractPurchase {
     @Override
     protected Byn sumCost(Byn mainCost) {
         return mainCost.sub(priceDiscount.mul(getNumberOfUnits()));
+    }
+    public int getPriceDiscount() {
+        return priceDiscount;
     }}

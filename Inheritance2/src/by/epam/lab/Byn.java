@@ -1,23 +1,20 @@
+package Inheritance2;
+
 public final class Byn implements Comparable<Byn> {
     private int value;
-    public Byn(int value) {
+    public Byn(int i) {
         this.value = value;
     }
-
+    public Byn() {}
     public Byn(Byn byn) {
     }
-    /*public int compareTo(Byn byn) {
-        return this.value - byn.value;
-    }*/
-
     @Override
-    public int compareTo(Byn o) {
-        return this.value - o.value;
+    public int compareTo(Byn byn) {
+        return value - byn.value;
     }
-
     @Override
     public String toString() {
-        return String.format("%d.%02d",this.value/100, value%100);
+        return String.format("%d.%02d",value/100, value%100);
     }
     @Override
     public boolean equals(Object o) {
@@ -26,22 +23,48 @@ public final class Byn implements Comparable<Byn> {
         Byn byn = (Byn) o;
         return this.value == byn.value;
     }
-    public Byn add(Byn byn) {
+    ////////////////////////////////////////////////////////////////////////
+    /*public Byn add(Byn byn) {
         return new Byn(value + byn.value);
-    }
+    }*/
+    public Byn add(int a){
+        value+=a;
+        return this; }
+    /*
     public Byn sub(Byn byn) {
         return new Byn(value - byn.value);
+    }*/
+    public Byn sub(int a) {
+        value=value-a;
+        return this;
     }
-    public Byn mul(int a) {
+    /* public Byn mul(int a) {
+         return new Byn(value * a);
+     }
+     */
+    public Byn mul(int a){
         value*=a;
         return this;
     }
+
+    /*  public Byn mul(double a, Round round, int digits) {
+          return new Byn(round.rounding(value * a, digits));
+      }
+      */
     public Byn mul(double a, Round round, int digits) {
-        return new Byn(round.rounding((int) (value * a), digits));
+        round.rounding(value * a, digits);
+        return this;
     }
-    public Byn mul(double a) {
+
+   /* public Byn mul(double a) {
         return mul(a, Round.ROUND, 0);
+    }*/
+
+    public Byn mul(double a) {
+        mul(a, Round.ROUND, 0);
+        return this;
     }
+
     public Byn round(Round round, int digits) {
         return new Byn(round.rounding(value, digits));
     }
@@ -55,7 +78,7 @@ public final class Byn implements Comparable<Byn> {
                 return Math.round(roundingValue);
             }};
         abstract double roundFunction(double roundingValue);
-        private int rounding(int roundingValue, int num) {
+        private int rounding(double roundingValue, int num) {
             final int[] ten = {1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000};
             return (int) roundFunction(roundingValue / ten[num]) * ten[num];
         }}}

@@ -1,3 +1,5 @@
+package Inheritance2;
+
 public abstract class AbstractPurchase implements Comparable<AbstractPurchase> {
     private final Product product;
     private int numberOfUnits;
@@ -5,15 +7,9 @@ public abstract class AbstractPurchase implements Comparable<AbstractPurchase> {
         this.product = product;
         this.numberOfUnits = numberUnits;
     }
-
-    public AbstractPurchase(Product product) {
-        this.product = product;
-    }
-
     public Product getProduct() {
         return product;
     }
-
     public int getNumberOfUnits() {
         return numberOfUnits;
     }

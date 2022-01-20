@@ -1,3 +1,5 @@
+package Inheritance2;
+
 public class PercentDiscountPurchase extends AbstractPurchase {
     private final double percentDiscount;
     private final static int NUMBER_DISCOUNT = 10;
@@ -9,10 +11,12 @@ public class PercentDiscountPurchase extends AbstractPurchase {
     protected String fieldsToString() {
         return super.fieldsToString()  + ";" + percentDiscount;
     }
+    Byn mainCost = new Byn(getProduct().getPrice()).mul(getNumberOfUnits());
+
     @Override
     protected Byn sumCost(Byn mainCost) {
         if (NUMBER_DISCOUNT < getNumberOfUnits()) {
             mainCost.mul(1.0 - percentDiscount / 100.0);
         }
         return mainCost;
-  }}
+    }}

@@ -1,3 +1,5 @@
+package Inheritance2;
+
 public class Product {
     final private String name;
     final private Byn price;
@@ -8,7 +10,6 @@ public class Product {
         this.name = name;
         this.price = price;
     }
-
     public String getName() {
         return name;
     }
@@ -17,5 +18,5 @@ public class Product {
     }
     @Override
     public String toString() {
-        return name + ";" + price;
+        return getName() + ";" + getPrice();
     }}
