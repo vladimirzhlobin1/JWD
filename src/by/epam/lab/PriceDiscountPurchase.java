@@ -2,7 +2,8 @@ package Inheritance2;
 
 public class PriceDiscountPurchase extends AbstractPurchase {
     private Byn priceDiscount;
-    public PriceDiscountPurchase (Product product, int numberUnits, Byn priceDiscount) {
+
+    public PriceDiscountPurchase(Product product, int numberUnits, Byn priceDiscount) {
         super(product, numberUnits);
         this.priceDiscount = priceDiscount;
     }
@@ -15,10 +16,13 @@ public class PriceDiscountPurchase extends AbstractPurchase {
     protected String fieldsToString() {
         return super.fieldsToString() + ";" + priceDiscount;
     }
+
     @Override
     protected Byn sumCost() {
         return new Byn(getProduct().getPrice()).sub(priceDiscount).mul(getNumberOfUnits());
     }
+
     public Byn getPriceDiscount() {
         return priceDiscount;
-    }}
+    }
+}

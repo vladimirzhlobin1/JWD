@@ -2,20 +2,28 @@ package Inheritance2;
 
 public class Byn implements Comparable<Byn> {
     private int value;
+
     public Byn(int i) {
-        this.value = value;
+        this.value = i;
     }
-    public Byn() {}
+
+    public Byn() {
+    }
+
     public Byn(Byn byn) {
+        value = byn.value;
     }
+
     @Override
     public int compareTo(Byn byn) {
         return value - byn.value;
     }
+
     @Override
     public String toString() {
-        return String.format("%d.%02d",value/100, value%100);
+        return String.format("%d.%02d", value / 100, value % 100);
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -23,17 +31,22 @@ public class Byn implements Comparable<Byn> {
         Byn byn = (Byn) o;
         return this.value == byn.value;
     }
-    public Byn add(Byn a){
-        value+=a.value;
-        return this; }
-    public Byn sub (Byn a) {
+
+    public Byn add(Byn a) {
+        value += a.value;
+        return this;
+    }
+
+    public Byn sub(Byn a) {
         value -= a.value;
         return this;
     }
-    public Byn mul(int a){
-        value*=a;
+
+    public Byn mul(int a) {
+        value *= a;
         return this;
     }
+
     public Byn mul(double a, Round round, int digits) {
         round.rounding(value * a, digits);
         return this;

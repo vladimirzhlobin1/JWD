@@ -2,7 +2,8 @@ package Inheritance2;
 
 public class TransportWithPurchase extends AbstractPurchase {
     private Byn transportExpenses;
-    public TransportWithPurchase(Product product,  int numberUnits, Byn transportExpenses) {
+
+    public TransportWithPurchase(Product product, int numberUnits, Byn transportExpenses) {
         super(product, numberUnits);
         this.transportExpenses = transportExpenses;
     }
@@ -19,6 +20,7 @@ public class TransportWithPurchase extends AbstractPurchase {
     protected String fieldsToString() {
         return super.fieldsToString() + ";" + transportExpenses;
     }
+
     @Override
     protected Byn sumCost() {
         return new Byn(getProduct().getPrice()).mul(getNumberOfUnits()).add(transportExpenses);
