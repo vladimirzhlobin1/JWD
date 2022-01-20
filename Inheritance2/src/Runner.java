@@ -29,4 +29,4 @@ public class Runner {
         } else {
             System.out.println("Required purchase is " + purchases[index]);
         }}
-    }
+}
