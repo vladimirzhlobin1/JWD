@@ -8,10 +8,10 @@ public class Runner {
         AbstractPurchase[] purchases = new AbstractPurchase[]{
                 new TransportWithPurchase(JUICE, 1, new Byn(2)),
                 new TransportWithPurchase(JUICE, 2, new Byn(10)),
-                new PercentDiscountPurchase(JUICE, 1, 15),
-                new PercentDiscountPurchase(JUICE, 2, 15),
+                new PercentDiscountPurchase(JUICE, 1, 5.11),
+                new PercentDiscountPurchase(JUICE, 2, 1.11),
                 new PriceDiscountPurchase(JUICE, 1, new Byn(20)),
-                new PriceDiscountPurchase(JUICE, 1, new Byn(15)),
+                new PriceDiscountPurchase(JUICE, 1, new Byn(15))
         };
         printPurchases(purchases);
         System.out.println("Sorting from max to min.................");
@@ -27,7 +27,7 @@ public class Runner {
         }
     }
 
-    public static void intSearch(AbstractPurchase[] purchases) {
+    public static int intSearch(AbstractPurchase[] purchases) {
         int index = Arrays.binarySearch(purchases, new TransportWithPurchase(
                 new Product("JUICE", new Byn(500)), 1, new Byn(1)));
         if (index < 0) {
@@ -35,5 +35,6 @@ public class Runner {
         } else {
             System.out.println("Required purchase is " + purchases[index]);
         }
+        return index;
     }
 }
