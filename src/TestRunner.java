@@ -2,6 +2,8 @@ import Inheritance2.*;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 public class TestRunner {
     public void testByn(int value) {
         Byn byn1 = new Byn(value);
@@ -25,12 +27,20 @@ public class TestRunner {
 
     @Test
     public void testSearch() {
-        final int UNSUCCESSFUL = -1;
         AbstractPurchase[] purchases = new AbstractPurchase[]{
-                new TransportWithPurchase(new Product("Juice", new Byn(2)), 1, new Byn(2)),
-                new TransportWithPurchase(new Product("Juice", new Byn(3)), 2, new Byn(1))};
-        Assert.assertEquals(UNSUCCESSFUL, Runner.intSearch(purchases, new TransportWithPurchase(
-                new Product("JUICE", new Byn(500)), 1, new Byn(1))));
+                new TransportWithPurchase(new Product("Juice", new Byn(20)), 1, new Byn(2)),
+                new TransportWithPurchase(new Product("Juice", new Byn(150)), 7, new Byn(15)),
+                new TransportWithPurchase(new Product("Juice", new Byn(50)), 2, new Byn(12)),
+                new TransportWithPurchase(new Product("Juice", new Byn(60)), 4, new Byn(11)),
+                new TransportWithPurchase(new Product("Juice", new Byn(70)), 1, new Byn(14))
+        };
+        Arrays.sort(purchases);
+        Assert.assertEquals(3, Runner.intSearch(purchases, new TransportWithPurchase(
+                new Product("Juice", new Byn(20)), 1, new Byn(2))));
+        Assert.assertEquals(0, Runner.intSearch(purchases, new TransportWithPurchase(
+                new Product("Juice", new Byn(150)), 7, new Byn(15))));
+        Assert.assertEquals(2, Runner.intSearch(purchases, new TransportWithPurchase(
+                new Product("Juice", new Byn(50)), 2, new Byn(12))));
     }
 
 }
