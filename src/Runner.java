@@ -28,9 +28,8 @@ public class Runner {
         }
     }
 
-    public static int intSearch(AbstractPurchase[] purchases, TransportWithPurchase tr) {
-        int index = Arrays.binarySearch(purchases, new TransportWithPurchase(
-                new Product("JUICE", new Byn(500)), 1, new Byn(1)));
+    public static int intSearch(AbstractPurchase[] purchases, AbstractPurchase ab) {
+        int index = Arrays.binarySearch(purchases, ab);
         if (index < 0) {
             System.out.println("Required purchase is not found");
         } else {
