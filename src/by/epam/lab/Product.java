@@ -1,8 +1,8 @@
 package Inheritance2;
 
 public class Product {
-    final private String name;
-    final private Byn price;
+    private final String name;
+    private final Byn price;
 
     public Product() {
         this(null, null);

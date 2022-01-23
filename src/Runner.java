@@ -15,10 +15,11 @@ public class Runner {
         };
         printPurchases(purchases);
         System.out.println("Sorting from max to min.................");
-        Arrays.sort (purchases);
+        Arrays.sort(purchases);
         printPurchases(purchases);
         System.out.println("Minimum cost is = " + purchases[purchases.length - 1]);
-        intSearch(purchases);
+        intSearch(purchases, new TransportWithPurchase(
+                new Product("JUICE", new Byn(500)), 1, new Byn(1)));
     }
 
     private static void printPurchases(AbstractPurchase[] purchases) {
@@ -27,7 +28,7 @@ public class Runner {
         }
     }
 
-    public static int intSearch(AbstractPurchase[] purchases) {
+    public static int intSearch(AbstractPurchase[] purchases, TransportWithPurchase tr) {
         int index = Arrays.binarySearch(purchases, new TransportWithPurchase(
                 new Product("JUICE", new Byn(500)), 1, new Byn(1)));
         if (index < 0) {
