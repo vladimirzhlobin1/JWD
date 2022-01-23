@@ -10,17 +10,16 @@ public abstract class AbstractPurchase implements Comparable<AbstractPurchase> {
     public void setNumberOfUnits(int numberOfUnits) {
         this.numberOfUnits = numberOfUnits;
     }
-    protected abstract Byn getFinalCost(Byn baseCost);
     protected abstract Byn sumCost(Byn baseCost);
-    Byn baseCost = getProduct().getPrice().mul(numberOfUnits);
-    Byn finalCost = getFinalCost(baseCost);
-    public Byn getCost() {return finalCost.round(Round.FLOOR, 2);}
-    protected String fieldsToString() {
-        return getClass().getSimpleName() + ";" +product + ";" + numberOfUnits;
+    public Byn getCost() {
+        Byn baseCost = product.getPrice().mul(numberOfUnits);
+        Byn finalCost = sumCost(baseCost);
+        return finalCost.round(Round.FLOOR, 2);
     }
+    protected String fieldsToString() {
+        return getClass().getSimpleName() + ";" +product + ";" + numberOfUnits;}
     @Override
     public String toString() {
         return fieldsToString() + ";" + getCost();
     }
-    public int compareTo(AbstractPurchase purchase){return purchase.getCost().compareTo(getCost());}
-}
+    public int compareTo(AbstractPurchase purchase){return purchase.getCost().compareTo(getCost());}}

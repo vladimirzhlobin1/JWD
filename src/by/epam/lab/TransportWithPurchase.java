@@ -10,7 +10,6 @@ public class TransportWithPurchase extends AbstractPurchase {
         return super.fieldsToString() + ";" + transportExpenses;
     }
     @Override
-    protected Byn getFinalCost(Byn baseCost) {return baseCost.add(transportExpenses);}
-    @Override
-    protected Byn sumCost(Byn baseCost) {return new Byn(getCost());}
+    protected Byn sumCost(Byn baseCost) {return baseCost.add(transportExpenses);
+    }
 }

@@ -9,9 +9,9 @@ public class PercentDiscountPurchase extends AbstractPurchase {
         return super.fieldsToString()  + ";" + percentDiscount;
     }
     @Override
-    protected Byn getFinalCost(Byn baseCost) {return baseCost.mul(getNumberOfUnits());}
-    @Override
     protected Byn sumCost(Byn baseCost) {
-        Byn byn = new Byn(getCost());if (getNumberOfUnits() > NUMBER_DISCOUNT) {byn.mul(percentDiscount);
-        }return baseCost;}
+        if (getNumberOfUnits() > NUMBER_DISCOUNT)
+        {baseCost = baseCost.mul(1-percentDiscount/100);
+        }return baseCost;
+    }
 }
