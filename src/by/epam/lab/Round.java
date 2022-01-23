@@ -7,7 +7,7 @@ public enum Round {
         }
     },
     ROUND {
-        double roundFunction(double roundingValue) {
+        double  roundFunction(double roundingValue) {
             return Math.round(roundingValue);
         }
     };

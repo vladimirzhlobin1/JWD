@@ -1,42 +1,26 @@
 package Inheritance2;
-
 public abstract class AbstractPurchase implements Comparable<AbstractPurchase> {
     private final Product product;
     private int numberOfUnits;
-
-    public AbstractPurchase(Product product, int numberUnits) {
-        this.product = product;
-        this.numberOfUnits = numberUnits;
-    }
-
+    public AbstractPurchase(Product product, int numberUnits) {this.product = product;this.numberOfUnits = numberUnits;}
     public Product getProduct() {
         return product;
     }
-
-    public int getNumberOfUnits() {
-        return numberOfUnits;
-    }
-
+    public int getNumberOfUnits() {return numberOfUnits;}
     public void setNumberOfUnits(int numberOfUnits) {
         this.numberOfUnits = numberOfUnits;
     }
-
-    protected abstract Byn sumCost();
-
-    public Byn getCost() {
-        return sumCost().round(Round.FLOOR, 2);
-    }
-
+    protected abstract Byn getFinalCost(Byn baseCost);
+    protected abstract Byn sumCost(Byn baseCost);
+    Byn baseCost = getProduct().getPrice().mul(numberOfUnits);
+    Byn finalCost = getFinalCost(baseCost);
+    public Byn getCost() {return finalCost.round(Round.FLOOR, 2);}
     protected String fieldsToString() {
-        return getClass().getSimpleName() + ";" + product + ";" + numberOfUnits;
+        return getClass().getSimpleName() + ";" +product + ";" + numberOfUnits;
     }
-
     @Override
     public String toString() {
         return fieldsToString() + ";" + getCost();
     }
-
-    public int compareTo(AbstractPurchase purchase) {
-        return purchase.getCost().compareTo(getCost());
-    }
+    public int compareTo(AbstractPurchase purchase){return purchase.getCost().compareTo(getCost());}
 }

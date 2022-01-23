@@ -18,7 +18,7 @@ public class TestRunner {
     public void testGetCost() {
         TransportWithPurchase tr = new TransportWithPurchase
                 (new Product("Oil", new Byn(3)), 1, new Byn(100));
-        Byn byn1 = new Byn(tr.getCost());
+        Byn byn1 = new Byn (tr.getCost());
         Assert.assertEquals(new Byn(100), byn1);
         PriceDiscountPurchase pr = new PriceDiscountPurchase
                 (new Product("Oil", new Byn(3)), 1, new Byn(-100));

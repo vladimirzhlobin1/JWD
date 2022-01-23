@@ -15,7 +15,7 @@ public class Runner {
         };
         printPurchases(purchases);
         System.out.println("Sorting from max to min.................");
-        Arrays.sort(purchases);
+        Arrays.sort (purchases);
         printPurchases(purchases);
         System.out.println("Minimum cost is = " + purchases[purchases.length - 1]);
         intSearch(purchases);
