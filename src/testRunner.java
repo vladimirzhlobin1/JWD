@@ -2,10 +2,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Locale;
 import java.util.Scanner;
+
 import org.junit.Assert;
 import org.junit.Test;
 
-public class testRunner {
+public class testRunner1 {
     private static final String MINUS = " - ";
     private static final String RESULT_HEAD = "result(";
     private static final String RESULT_TAIL = ") = ";
@@ -14,12 +15,11 @@ public class testRunner {
 
     private static int getResult(String csvName, StringBuilder strResult)
             throws FileNotFoundException {
+        double result = 0.0;
         int errorLines = 0;
-        try {
-            Scanner sc = new Scanner(new FileReader(csvName));
+        try (Scanner sc = new Scanner(new FileReader(csvName))) {
             sc.useLocale(Locale.ENGLISH);
-            StringBuilder StrResult = new StringBuilder();
-            double result = 0.0;
+
             while (sc.hasNextLine()) {
                 try {
                     String line = sc.nextLine();
@@ -27,22 +27,21 @@ public class testRunner {
                     int index = Integer.parseInt(elements[0]);
                     double number = Double.parseDouble(elements[index]);
                     result += number;
-                    StrResult.append(number >= 0 ? PLUS : MINUS).append(Math.abs(number));
+                    strResult.append(number >= 0 ? PLUS : MINUS).append(Math.abs(number));
                 } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
                     errorLines++;
                 }
             }
-            if (StrResult.length() > 0) {
+            if (strResult.length() > 0) {
                 final int SINGL = MINUS.length();
                 final char CHAR_MIN = '-';
-                String sym = StrResult.substring(0, SINGL);
-                StrResult.delete(0, SINGL);
+                String sym = strResult.substring(0, SINGL);
+                strResult.delete(0, SINGL);
                 if (sym.equals(MINUS)) {
-                    StrResult.insert(0, CHAR_MIN);
+                    strResult.insert(0, CHAR_MIN);
                 }
             }
-            StrResult.insert(0, RESULT_HEAD).append(RESULT_TAIL).append(result);
-        } finally {
+            strResult.insert(0, RESULT_HEAD).append(RESULT_TAIL).append(result);
         }
         return errorLines;
     }
