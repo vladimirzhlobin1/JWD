@@ -2,11 +2,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Locale;
 import java.util.Scanner;
-
 import org.junit.Assert;
 import org.junit.Test;
 
-public class testRunner1 {
+public class testRunner {
     private static final String MINUS = " - ";
     private static final String RESULT_HEAD = "result(";
     private static final String RESULT_TAIL = ") = ";
@@ -28,7 +27,7 @@ public class testRunner1 {
                     int index = Integer.parseInt(elements[0]);
                     double number = Double.parseDouble(elements[index]);
                     result += number;
-                    StrResult.append(number >= 0 ? MINUS : PLUS).append(Math.abs(number));
+                    StrResult.append(number >= 0 ? PLUS : MINUS).append(Math.abs(number));
                 } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
                     errorLines++;
                 }
