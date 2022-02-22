@@ -92,7 +92,7 @@ public class testRunner {
         Itest it = new Itest();
         int res = getResult("in2", it);
         Assert.assertEquals(8.24, it.getSum(), 0.0001);
-        Assert.assertEquals(3, res);
+        Assert.assertEquals(3,  res);
     }
 
 }
