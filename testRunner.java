@@ -1,12 +1,12 @@
-import org.junit.Assert;
-import org.junit.Test;
-
 import java.io.FileNotFoundException;
 import java.util.Enumeration;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.junit.Assert;
+import org.junit.Test;
 
 public class testRunner {
     final static String KEY_FIRST = "index(.*)";
@@ -71,6 +71,7 @@ public class testRunner {
         }
     }
 
+
     @Test
     public void testMainScenario1() throws FileNotFoundException {
         Itest it = new Itest();
@@ -92,7 +93,33 @@ public class testRunner {
         Itest it = new Itest();
         int res = getResult("in2", it);
         Assert.assertEquals(8.24, it.getSum(), 0.0001);
-        Assert.assertEquals(3,  res);
+        Assert.assertEquals(3, res);
+    }
+
+    @Test
+    public void testMain() {
+        class TestCase {
+            String fileName;
+            Itest test;
+
+            public TestCase(String fileName, Itest test) {
+                super();
+                this.fileName = fileName;
+                this.test = test;
+            }
+
+            public String getFileName() {
+                return fileName;
+            }
+        }
+        TestCase[] testCases = {new TestCase("in", new Itest(8.24)),
+                new TestCase("in2", new Itest(30.124)), new TestCase("in3", new Itest(1.9))};
+        {
+            for (TestCase test1 : testCases) {
+                Itest resultTest = getResult(TestCase.getFileName());
+                Assert.assertEquals(testCases, 3);
+            }
+        }
     }
 
 }
