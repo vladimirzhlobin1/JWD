@@ -117,10 +117,12 @@ public class testRunner {
         {
             for (TestCase test1 : testCases) {
                 Itest resultTest = getResult(TestCase.getFileName());
-                Assert.assertEquals(testCases, 3);
+                Assert.assertEquals(resultTest, 3);
                 Assert.assertEquals(testCases[0], 3);
+                Itest resultTest2 = getResult(TestCase.getFileName());
             }
         }
+        return;
     }
 
 }
