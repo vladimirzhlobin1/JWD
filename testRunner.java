@@ -98,7 +98,7 @@ public class testRunner {
 
     @Test
     public void testMain() {
-        class TestCase {
+        public class TestCase {
             String fileName;
             Itest test;
 
@@ -118,6 +118,7 @@ public class testRunner {
             for (TestCase test1 : testCases) {
                 Itest resultTest = getResult(TestCase.getFileName());
                 Assert.assertEquals(testCases, 3);
+                Assert.assertEquals(testCases[0], 3);
             }
         }
     }
