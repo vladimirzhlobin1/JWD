@@ -11,6 +11,7 @@ import org.junit.Test;
 public class TestRunner {
     final static String KEY_FIRST = "index(.*)";
     final static String NUM_SEARCH = "[1-9]\\d*";
+    final static String FILE_NOT_FOUND = "File not found";
     final static String VALUE = "value";
     static Pattern pattern = Pattern.compile(KEY_FIRST);
     static Pattern pattern2 = Pattern.compile(NUM_SEARCH);
@@ -43,7 +44,7 @@ public class TestRunner {
                 }
             }
         } catch (MissingResourceException e) {
-            System.out.println("No file...");
+            System.out.println(FILE_NOT_FOUND);
         }
         return new Result(sum, errors);
     }
@@ -60,7 +61,7 @@ public class TestRunner {
         public Result() {
         }
 
-        public double errorLines() {
+        public double errors() {
             return errors;
         }
 
@@ -76,11 +77,11 @@ public class TestRunner {
     @Test
     public void testMain() {
         class TestCase {
+            private static final double DELTA = 0.00001;
             private final String fileName;
             private final Result test;
 
             public TestCase(String fileName, Result test) {
-                super();
                 this.fileName = fileName;
                 this.test = test;
             }
@@ -98,8 +99,8 @@ public class TestRunner {
                 new TestCase("in3", new Result(1.9, 0))};
         for (TestCase test1 : testCases) {
             Result resultTest = getResult(test1.fileName);
-            Assert.assertEquals(resultTest.sum, test1.getTest().sum, 0.00001);
-            Assert.assertEquals(resultTest.errors, test1.getTest().errorLines());
+            Assert.assertEquals(resultTest.sum, test1.getTest().sum, DELTA);
+            Assert.assertEquals(resultTest.errors, test1.getTest().errors());
         }
     }
 }
