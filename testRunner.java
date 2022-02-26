@@ -99,8 +99,14 @@ public class TestRunner {
                 new TestCase("in3", new Result(1.9, 0))};
         for (TestCase test1 : testCases) {
             Result resultTest = getResult(test1.fileName);
-            Assert.assertEquals(resultTest.sum, test1.getTest().sum, DELTA);
+            Assert.assertEquals(resultTest.sum, test1.getTest().sum, TestCase.DELTA);
             Assert.assertEquals(resultTest.errors, test1.getTest().errors());
         }
     }
+
+    @Test(expected = FileNotFoundException.class)
+    public void testFileNotFoundEx() throws FileNotFoundException {
+        getResult(FILE_NOT_FOUND);
+    }
+
 }
