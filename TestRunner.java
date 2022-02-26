@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class TestRunner {
-    final static String KEY_FIRST = "index(.*)";
+    final static  String KEY_FIRST = "index(.*)";
     final static String NUM_SEARCH = "[1-9]\\d*";
     final static String FILE_NOT_FOUND = "File not found";
     final static String VALUE = "value";
