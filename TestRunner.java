@@ -16,7 +16,7 @@ public class TestRunner {
     static Pattern pattern = Pattern.compile(KEY_FIRST);
     static Pattern pattern2 = Pattern.compile(NUM_SEARCH);
 
-    private static int getResult(String g) throws FileNotFoundException {
+    private static Result getResult(String g) throws FileNotFoundException {
         double sum = 0.0;
         int errors = 0;
         ResourceBundle rb = ResourceBundle.getBundle(g);
@@ -53,25 +53,10 @@ public class TestRunner {
             this.sum = sum;
             this.errors = errors;
         }
-
-        public Result() {
-        }
-
-        public double errors() {
-            return errors;
-        }
-
-        public double getSum() {
-            return sum;
-        }
-
-        public void setSum(double sum) {
-            this.sum = sum;
-        }
     }
 
     @Test
-    public void testMain() {
+    public void testMain() throws FileNotFoundException {
         class TestCase {
             private static final double DELTA = 0.00001;
             private final String fileName;
@@ -96,12 +81,13 @@ public class TestRunner {
         for (TestCase test1 : testCases) {
             Result resultTest = getResult(test1.fileName);
             Assert.assertEquals(resultTest.sum, test1.getTest().sum, TestCase.DELTA);
-            Assert.assertEquals(resultTest.errors, test1.getTest().errors());
+            Assert.assertEquals(resultTest.errors, test1.getTest().errors);
         }
     }
 
-    @Test(expected = FileNotFoundException.class)
-    public void testFileNotFoundEx() throws MissingResourceException {
+    @Test(expected = MissingResourceException.class)
+    public void testFileNotFoundEx() throws MissingResourceException, FileNotFoundException {
         getResult(FILE_NOT_FOUND);
     }
+
 }
