@@ -94,7 +94,7 @@ public class TestRunner {
                 return test;
             }
         }
-        TestCase[] testCases = {new TestCase("in", new Result(8.24, 3)),
+        TestCase[] testCases =  {new TestCase("in", new Result(8.24, 3)),
                 new TestCase("in2", new Result(30.124, 9)),
                 new TestCase("in3", new Result(1.9, 0))};
         for (TestCase test1 : testCases) {
