@@ -8,12 +8,14 @@ import java.util.regex.Pattern;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class testRunner {
+public class TestRunner {
     final static String KEY_FIRST = "index(.*)";
     final static String NUM_SEARCH = "[1-9]\\d*";
     final static String VALUE = "value";
+    static Pattern pattern = Pattern.compile(KEY_FIRST);
+    static Pattern pattern2 = Pattern.compile(NUM_SEARCH);
 
-    private static int getResult(String g, Itest it) throws FileNotFoundException {
+    private static int getResult(String g) throws FileNotFoundException {
         double sum = 0.0;
         int errors = 0;
         try {
@@ -21,15 +23,12 @@ public class testRunner {
             Enumeration<String> keys = rb.getKeys();
             while (keys.hasMoreElements()) {
                 String key = keys.nextElement();
-                Pattern pattern = Pattern.compile(KEY_FIRST);
-                Matcher keyMatcher = pattern.matcher(key);
+                Matcher keyMatcher = pattern.matcher(key);//первый паттерн
                 if (keyMatcher.matches()) {
                     String str1 = keyMatcher.group(1);
                     String str2 = rb.getString(key).trim();
-                    pattern = Pattern.compile(NUM_SEARCH);
-                    Matcher matcher1 = pattern.matcher(str1);
-                    pattern = Pattern.compile(NUM_SEARCH);
-                    Matcher matcher2 = pattern.matcher(str2);
+                    Matcher matcher1 = pattern2.matcher(str1);
+                    Matcher matcher2 = pattern2.matcher(str2);
                     if (matcher1.matches() && matcher2.matches()) {
                         String valueIJ = VALUE + str1 + str2;
                         try {
@@ -48,18 +47,23 @@ public class testRunner {
         } catch (MissingResourceException e) {
             System.out.println("No file...");
         }
-        it.setSum(sum);
+        // it.setSum(sum);
         return errors;
     }
 
-    class Itest {
+    private static class Result {
         public double sum;
+        public int errors;
 
-        public Itest(double sum) {
+        public Result(double sum) {
             this.sum = sum;
         }
 
-        public Itest() {
+        public Result() {
+        }
+
+        public double errorLines() {
+            return errors;
         }
 
         public double getSum() {
@@ -71,38 +75,13 @@ public class testRunner {
         }
     }
 
-
-    @Test
-    public void testMainScenario1() throws FileNotFoundException {
-        Itest it = new Itest();
-        int res = getResult("in3", it);
-        Assert.assertEquals(1.9, it.getSum(), 0.0001);
-        Assert.assertEquals(0, res);
-    }
-
-    @Test
-    public void testMainScenario2() throws FileNotFoundException {
-        Itest it = new Itest();
-        int res = getResult("in2", it);
-        Assert.assertEquals(30.242, it.getSum(), 0.0001);
-        Assert.assertEquals(9, res);
-    }
-
-    @Test
-    public void testMainScenario3() throws FileNotFoundException {
-        Itest it = new Itest();
-        int res = getResult("in2", it);
-        Assert.assertEquals(8.24, it.getSum(), 0.0001);
-        Assert.assertEquals(3, res);
-    }
-
     @Test
     public void testMain() {
-        public class TestCase {
-            String fileName;
-            Itest test;
+        class TestCase {
+            private final String fileName;
+            private final Result test;
 
-            public TestCase(String fileName, Itest test) {
+            public TestCase(String fileName, Result test) {
                 super();
                 this.fileName = fileName;
                 this.test = test;
@@ -111,18 +90,17 @@ public class testRunner {
             public String getFileName() {
                 return fileName;
             }
-        }
-        TestCase[] testCases = {new TestCase("in", new Itest(8.24)),
-                new TestCase("in2", new Itest(30.124)), new TestCase("in3", new Itest(1.9))};
-        {
-            for (TestCase test1 : testCases) {
-                Itest resultTest = getResult(TestCase.getFileName());
-                Assert.assertEquals(resultTest, 3);
-                Assert.assertEquals(testCases[0], 3);
-                Itest resultTest2 = getResult(TestCase.getFileName());
+
+            public Result getTest() {
+                return test;
             }
         }
-        return;
+        TestCase[] testCases = {new TestCase("in", new Result(8.24)),
+                new TestCase("in2", new Result(30.124)), new TestCase("in3", new Result(1.9))};
+        for (TestCase test1 : testCases) {
+            Result resultTest = getResult(test1.fileName);
+            Assert.assertEquals(resultTest.sum, test1.getTest().sum, 0.00001);
+            Assert.assertEquals(resultTest.errors, test1.getTest().errorLines());
+        }
     }
-
 }
