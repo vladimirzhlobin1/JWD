@@ -16,14 +16,14 @@ public class TestRunner {
     static Pattern pattern = Pattern.compile(KEY_FIRST);
     static Pattern pattern2 = Pattern.compile(NUM_SEARCH);
 
-    private static Result getResult(String g) throws FileNotFoundException {
+    private static Result getResult(String fileName) throws FileNotFoundException {
         double sum = 0.0;
         int errors = 0;
-        ResourceBundle rb = ResourceBundle.getBundle(g);
+        ResourceBundle rb = ResourceBundle.getBundle(fileName);
         Enumeration<String> keys = rb.getKeys();
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
-            Matcher keyMatcher = pattern.matcher(key);//первый паттерн
+            Matcher keyMatcher = pattern.matcher(key);
             if (keyMatcher.matches()) {
                 String str1 = keyMatcher.group(1);
                 String str2 = rb.getString(key).trim();
@@ -67,16 +67,12 @@ public class TestRunner {
                 this.test = test;
             }
 
-            public String getFileName() {
-                return fileName;
-            }
-
             public Result getTest() {
                 return test;
             }
         }
         TestCase[] testCases = {new TestCase("in", new Result(8.24, 3)),
-                new TestCase("in2", new Result(30.124, 9)),
+                new TestCase("in2", new Result(30.242, 9)),
                 new TestCase("in3", new Result(1.9, 0))};
         for (TestCase test1 : testCases) {
             Result resultTest = getResult(test1.fileName);
@@ -86,7 +82,7 @@ public class TestRunner {
     }
 
     @Test(expected = MissingResourceException.class)
-    public void testFileNotFoundEx() throws MissingResourceException, FileNotFoundException {
+    public void testFileNotFoundEx() throws FileNotFoundException {
         getResult(FILE_NOT_FOUND);
     }
 
