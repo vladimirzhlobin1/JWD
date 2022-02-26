@@ -104,5 +104,4 @@ public class TestRunner {
     public void testFileNotFoundEx() throws MissingResourceException {
         getResult(FILE_NOT_FOUND);
     }
-
 }
