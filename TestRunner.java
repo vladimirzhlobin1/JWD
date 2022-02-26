@@ -19,94 +19,86 @@ public class TestRunner {
     private static int getResult(String g) throws FileNotFoundException {
         double sum = 0.0;
         int errors = 0;
-        try {
-            ResourceBundle rb = ResourceBundle.getBundle(g);
-            Enumeration<String> keys = rb.getKeys();
-            while (keys.hasMoreElements()) {
-                String key = keys.nextElement();
-                Matcher keyMatcher = pattern.matcher(key);//первый паттерн
-                if (keyMatcher.matches()) {
-                    String str1 = keyMatcher.group(1);
-                    String str2 = rb.getString(key).trim();
-                    Matcher matcher1 = pattern2.matcher(str1);
-                    Matcher matcher2 = pattern2.matcher(str2);
-                    if (matcher1.matches() && matcher2.matches()) {
-                        String valueIJ = VALUE + str1 + str2;
-                        try {
-                            String number = rb.getString(valueIJ).trim();
-                            sum += Double.parseDouble(number);
-                        } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
-                            errors++;
-                        }
-                    } else {
+        ResourceBundle rb = ResourceBundle.getBundle(g);
+        Enumeration<String> keys = rb.getKeys();
+        while (keys.hasMoreElements()) {
+            String key = keys.nextElement();
+            Matcher keyMatcher = pattern.matcher(key);//первый паттерн
+            if (keyMatcher.matches()) {
+                String str1 = keyMatcher.group(1);
+                String str2 = rb.getString(key).trim();
+                Matcher matcher1 = pattern2.matcher(str1);
+                Matcher matcher2 = pattern2.matcher(str2);
+                if (matcher1.matches() && matcher2.matches()) {
+                    String valueIJ = VALUE + str1 + str2;
+                    try {
+                        String number = rb.getString(valueIJ).trim();
+                        sum += Double.parseDouble(number);
+                    } catch (MissingResourceException | NumberFormatException e) {
                         errors++;
                     }
+                } else {
+                    errors++;
                 }
             }
-        } catch (MissingResourceException e) {
-            System.out.println(FILE_NOT_FOUND);
+            return new Result(sum, errors);
         }
-        return new Result(sum, errors);
-    }
+        private static class Result {
+            private double sum;
+            private int errors;
 
-    private static class Result {
-        private double sum;
-        private int errors;
-
-        public Result(double sum, int errors) {
-            this.sum = sum;
-            this.errors = errors;
-        }
-
-        public Result() {
-        }
-
-        public double errors() {
-            return errors;
-        }
-
-        public double getSum() {
-            return sum;
-        }
-
-        public void setSum(double sum) {
-            this.sum = sum;
-        }
-    }
-
-    @Test
-    public void testMain() {
-        class TestCase {
-            private static final double DELTA = 0.00001;
-            private final String fileName;
-            private final Result test;
-
-            public TestCase(String fileName, Result test) {
-                this.fileName = fileName;
-                this.test = test;
+            public Result(double sum, int errors) {
+                this.sum = sum;
+                this.errors = errors;
             }
 
-            public String getFileName() {
-                return fileName;
+            public Result() {
             }
 
-            public Result getTest() {
-                return test;
+            public double errors() {
+                return errors;
+            }
+
+            public double getSum() {
+                return sum;
+            }
+
+            public void setSum(double sum) {
+                this.sum = sum;
             }
         }
-        TestCase[] testCases =  {new TestCase("in", new Result(8.24, 3)),
-                new TestCase("in2", new Result(30.124, 9)),
-                new TestCase("in3", new Result(1.9, 0))};
-        for (TestCase test1 : testCases) {
-            Result resultTest = getResult(test1.fileName);
-            Assert.assertEquals(resultTest.sum, test1.getTest().sum, TestCase.DELTA);
-            Assert.assertEquals(resultTest.errors, test1.getTest().errors());
+        @Test
+        public void testMain () {
+            class TestCase {
+                private static final double DELTA = 0.00001;
+                private final String fileName;
+                private final Result test;
+
+                public TestCase(String fileName, Result test) {
+                    this.fileName = fileName;
+                    this.test = test;
+                }
+
+                public String getFileName() {
+                    return fileName;
+                }
+
+                public Result getTest() {
+                    return test;
+                }
+            }
+            TestCase[] testCases = {new TestCase("in", new Result(8.24, 3)),
+                    new TestCase("in2", new Result(30.124, 9)),
+                    new TestCase("in3", new Result(1.9, 0))};
+            for (TestCase test1 : testCases) {
+                Result resultTest = getResult(test1.fileName);
+                Assert.assertEquals(resultTest.sum, test1.getTest().sum, TestCase.DELTA);
+                Assert.assertEquals(resultTest.errors, test1.getTest().errors());
+            }
         }
-    }
+        @Test(expected = FileNotFoundException.class)
+        public void testFileNotFoundEx () throws MissingResourceException {
+            getResult(FILE_NOT_FOUND);
+        }
 
-    @Test(expected = FileNotFoundException.class)
-    public void testFileNotFoundEx() throws FileNotFoundException {
-        getResult(FILE_NOT_FOUND);
     }
-
-}
