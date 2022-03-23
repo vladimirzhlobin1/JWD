@@ -1,4 +1,4 @@
-package by.gsu.epamlab.enums;
+package by.epam.lab.enums;
 
 public enum Fields {
     NAME,

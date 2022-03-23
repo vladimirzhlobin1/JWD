@@ -1,6 +1,7 @@
-package by.gsu.epamlab.comparators;
+package by.epam.lab.comparators;
 import java.util.Comparator;
-import by.gsu.epamlab.main.Purchase;
+
+import by.epam.lab.main.Purchase;
 public class PurchaseComparatorBuilder {
     private static Comparator<Purchase> purchaseComparator;
     private PurchaseComparatorBuilder() {}

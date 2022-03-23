@@ -1,6 +1,6 @@
-package by.gsu.epamlab.enums;
+package by.epam.lab.enums;
 
-import by.gsu.epamlab.Constants;
+import by.epam.lab.Constants;
 
 public enum EnumRow {
 

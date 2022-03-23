@@ -1,6 +1,6 @@
-package by.gsu.epamlab.exceptions;
+package by.epam.lab.exceptions;
 
-import by.gsu.epamlab.Constants;
+import by.epam.lab.Constants;
 
 public class RawException extends Exception {
 

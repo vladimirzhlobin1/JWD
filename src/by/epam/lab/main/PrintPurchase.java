@@ -1,7 +1,7 @@
-package by.gsu.epamlab.main;
+package by.epam.lab.main;
 
-import by.gsu.epamlab.Constants;
-import by.gsu.epamlab.enums.EnumRow;
+import by.epam.lab.Constants;
+import by.epam.lab.enums.EnumRow;
 
 import java.util.Formatter;
 

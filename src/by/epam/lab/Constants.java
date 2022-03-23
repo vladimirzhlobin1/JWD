@@ -1,4 +1,4 @@
-package by.gsu.epamlab;
+package by.epam.lab;
 
 public class Constants {
 

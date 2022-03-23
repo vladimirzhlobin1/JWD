@@ -1,9 +1,9 @@
-package by.gsu.epamlab.main;
+package by.epam.lab.main;
 
-import by.gsu.epamlab.Constants;
-import by.gsu.epamlab.comparators.PurchaseComparatorBuilder;
-import by.gsu.epamlab.enums.EnumRow;
-import by.gsu.epamlab.exceptions.RawException;
+import by.epam.lab.Constants;
+import by.epam.lab.comparators.PurchaseComparatorBuilder;
+import by.epam.lab.enums.EnumRow;
+import by.epam.lab.exceptions.RawException;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -24,10 +24,9 @@ public class PurchasesList {
 
     public PurchasesList(String fileName) {
         this();
-        Scanner scanner = null;
+   
         try {
-            scanner = new Scanner(new FileReader(Constants.PACKAGE + fileName));
-
+        	Scanner  scanner = new Scanner(new FileReader(Constants.PACKAGE + fileName));
             while (scanner.hasNext()) {
                 Purchase purchase = null;
                 try {
@@ -39,7 +38,6 @@ public class PurchasesList {
 
         } catch (FileNotFoundException e) {
             System.err.println(Constants.ERROR_FILE + Constants.PACKAGE+ fileName + Constants.FORMAT);
-        } finally {if (scanner != null) {scanner.close();}
         }}
 
     public void setPurchases(List<Purchase> purchases) {
@@ -136,5 +134,6 @@ private void errorPuch() {
         }
         return Collections.binarySearch(purchases, purchase, PURCHASE_COMPARATOR);
     }
+    
     
 }

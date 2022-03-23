@@ -1,6 +1,6 @@
-import by.gsu.epamlab.comparators.PurchaseComparatorBuilder;
-import by.gsu.epamlab.main.Purchase;
-import by.gsu.epamlab.main.PurchasesList;
+import by.epam.lab.comparators.PurchaseComparatorBuilder;
+import by.epam.lab.main.Purchase;
+import by.epam.lab.main.PurchasesList;
 public class Runner {
     public static void main(String[] args) {
             final String inFile = "in.csv";
@@ -11,11 +11,11 @@ public class Runner {
             final PurchasesList addonList = new PurchasesList(addonFile);
             mainList.insertPurchase(0, addonList.getPurchaseByIndex(addonList.size() - 1));
             mainList.insertPurchase(354, addonList.getPurchaseByIndex(0));
-            if (mainList.deletePurchase(3) < 0) {printErr("Error : you try delet an invalid index");}
-            if (mainList.deletePurchase(4) < 0) {printErr("Error : you try delet an invalid index");}
-            if (mainList.deletePurchase(5) < 0) {printErr("Error : you try delet an invalid index");} 
-            if (mainList.deletePurchase(-7) < 0){printErr("Error : you try delet an invalid index");} 
-            if (mainList.deletePurchase(20) < 0){printErr("Error : you try delet an invalid index");}
+            if (mainList.deletePurchase(3) < 0) {printErr("Error : you try to delete an invalid index");}
+            if (mainList.deletePurchase(4) < 0) {printErr("Error : you try to delete an invalid index");}
+            if (mainList.deletePurchase(5) < 0) {printErr("Error : you try to delete an invalid index");} 
+            if (mainList.deletePurchase(-7) < 0){printErr("Error : you try to delete an invalid index");} 
+            if (mainList.deletePurchase(20) < 0){printErr("Error : you try to delete an invalid index");}
             printList(mainList, "before sorting");
             mainList.sort();
             printList(mainList, "after sorting");
@@ -23,7 +23,7 @@ public class Runner {
             search(mainList, addonList, 3);        
             }
     private static void printList(PurchasesList list, String header) {
-        System.out.println(header);System.out.println(list.getProducts());System.out.println();}
+        System.out.println(header);System.out.println(list.getProducts());}
 
     private static void search(PurchasesList in, PurchasesList addon, int index) {
         Purchase purchase = addon.getPurchaseByIndex(index);

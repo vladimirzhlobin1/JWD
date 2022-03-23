@@ -1,8 +1,8 @@
-package by.gsu.epamlab.main;
+package by.epam.lab.main;
 
-import by.gsu.epamlab.Constants;
-import by.gsu.epamlab.enums.Fields;
-import by.gsu.epamlab.exceptions.NonpositiveArgumentException;
+import by.epam.lab.Constants;
+import by.epam.lab.enums.Fields;
+import by.epam.lab.exceptions.NonpositiveArgumentException;
 
 public class PriceDiscountPurchase extends Purchase {
 

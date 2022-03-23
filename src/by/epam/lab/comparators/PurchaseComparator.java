@@ -1,6 +1,6 @@
-package by.gsu.epamlab.comparators;
-import by.gsu.epamlab.main.PriceDiscountPurchase;
-import by.gsu.epamlab.main.Purchase;
+package by.epam.lab.comparators;
+import by.epam.lab.main.PriceDiscountPurchase;
+import by.epam.lab.main.Purchase;
 public class PurchaseComparator extends AbstractPurchaseComparator {
     @Override
     protected boolean isSubPurchase(Purchase p) {

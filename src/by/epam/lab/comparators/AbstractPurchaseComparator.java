@@ -1,6 +1,7 @@
-package by.gsu.epamlab.comparators;
+package by.epam.lab.comparators;
 import java.util.Comparator;
-import by.gsu.epamlab.main.Purchase;
+
+import by.epam.lab.main.Purchase;
 
 public abstract class AbstractPurchaseComparator implements Comparator<Purchase> {
     private enum Sign {EQUAL, MORE}
