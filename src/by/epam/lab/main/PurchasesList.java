@@ -30,20 +30,24 @@ public class PurchasesList {
     public PurchasesList(String fileName) {
         this();
         try {
-        	Scanner scanner = new Scanner(new FileReader(Constants.PACKAGE + fileName));
+            Scanner scanner = new Scanner(new FileReader(Constants.PACKAGE + fileName));
 
             while (scanner.hasNext()) {
                 Purchase purchase = null;
                 try {
                     purchase = PurchasesFactory.getPurchaseFromFactory(scanner.next());
-                } catch (RawException e) {System.err.println(e);
+                } catch (RawException e) {
+                    System.err.println(e);
                 }
-                if (purchase != null) { purchases.add(purchase);
-                }}
+                if (purchase != null) {
+                    purchases.add(purchase);
+                }
+            }
 
         } catch (FileNotFoundException e) {
-            System.err.println(Constants.ERROR_FILE + Constants.PACKAGE+ fileName + Constants.FORMAT);
-        } }
+            System.err.println(Constants.ERROR_FILE + Constants.PACKAGE + fileName + Constants.FORMAT);
+        }
+    }
 
     public void setPurchases(List<Purchase> purchases) {
         if (purchases == null) {
@@ -112,24 +116,23 @@ public class PurchasesList {
         }
         return res;
     }
-    
-  public int deletePurchase ( int from, int to){
-	  if (from <0) {from=0;}
-	  if(from>=purchases.size()) {
-		  return 0;
-	  }
-	if (to <0) {
-		return 0;
-	}
-	if (to>purchases.size()) {
-		to = purchases.size();
-	}
-purchases.subList(from, to).clear();
-return 1;
-	 }
-  
 
-	
+    public int deletePurchase(int from, int to) {
+        if (from < 0) {
+            from = 0;
+        }
+        if (from >= purchases.size()) {
+            return 0;
+        }
+        if (to < 0) {
+            return 0;
+        }
+        if (to > purchases.size()) {
+            to = purchases.size();
+        }
+        purchases.subList(from, to).clear();
+        return 1;
+    }
 
 
     public Purchase getPurchaseByIndex(int index) {
@@ -146,14 +149,16 @@ return 1;
         Collections.sort(purchases, PURCHASE_COMPARATOR);
         product = true;
     }
-private void errorPuch() {
+
+    private void errorPuch() {
         product = false;
     }
+
     public int search(Purchase purchase) {
         if (!product) {
             sort();
         }
         return Collections.binarySearch(purchases, purchase, PURCHASE_COMPARATOR);
     }
-    
+
 }

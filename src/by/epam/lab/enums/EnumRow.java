@@ -8,7 +8,7 @@ public enum EnumRow {
 
     private final String nameEnum;
 
-    
+
     EnumRow(String value) {
         this.nameEnum = value;
     }
@@ -18,6 +18,6 @@ public enum EnumRow {
     }
 
     public String toString() {
-        return name()+Constants.DELIMITER;
+        return name() + Constants.DELIMITER;
     }
 }

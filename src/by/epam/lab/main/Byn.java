@@ -28,34 +28,35 @@ public class Byn implements Comparable<Byn> {
         this.costOfObject = rubs * 100 + coins;
     }
 
-   
 
     public int getRubs() {
         return this.costOfObject / 100;
     }
- public Byn(Byn byn) {
+
+    public Byn(Byn byn) {
         this(byn.costOfObject);
     }
-    
- @Override
+
+    @Override
     public String toString() {
         return getRubs() + "." + costOfObject / 10 % 10 + costOfObject % 10;
     }
+
     @Override
     public int compareTo(Byn byn) {
         return this.costOfObject - byn.costOfObject;
     }
-public int getCoins() {
+
+    public int getCoins() {
         return this.costOfObject % 100;
     }
-   
+
 
     public Byn add(Byn byn) {
         this.costOfObject += byn.costOfObject;
         return this;
     }
 
-    
 
     public Byn mul(int k) {
         if (k < 0) {
@@ -64,43 +65,47 @@ public int getCoins() {
         this.costOfObject *= k;
         return this;
     }
-public Byn sub(Byn byn) {
+
+    public Byn sub(Byn byn) {
         if (costOfObject < byn.costOfObject) {
             throw new NegativeArgumentException(costOfObject - byn.costOfObject, Fields.BYN);
         }
         this.costOfObject -= byn.costOfObject;
         return this;
     }
+
     public Byn mul(double k, Round round, int digits) {
         this.costOfObject = round.rounding(this.costOfObject * k, digits);
         return this;
     }
 
-   
 
     public Byn mul(double k) {
         mul(k, Round.ROUND, 0);
         return this;
     }
- public Byn mul(double k, int digits) {
+
+    public Byn mul(double k, int digits) {
         mul(k, Round.ROUND, digits);
         return this;
     }
+
     public Byn mul(double k, Round round) {
         mul(k, round, 0);
         return this;
     }
 
-  
 
     public Byn round(int value) {
         round(Round.ROUND, value);
         return this;
     }
-  public Byn round(Round round) {
+
+    public Byn round(Round round) {
         round(round, 0);
         return this;
     }
+
     public Byn round(Round round, int value) {
         this.costOfObject = round.rounding(this.costOfObject, value);
         return this;
