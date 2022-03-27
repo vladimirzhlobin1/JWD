@@ -1,9 +1,9 @@
 package by.epam.lab.main;
 
+import java.util.Formatter;
+
 import by.epam.lab.Constants;
 import by.epam.lab.enums.EnumRow;
-
-import java.util.Formatter;
 
 public class PrintPurchase {
 

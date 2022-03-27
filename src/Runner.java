@@ -11,19 +11,18 @@ public class Runner {
             final PurchasesList addonList = new PurchasesList(addonFile);
             mainList.insertPurchase(0, addonList.getPurchaseByIndex(addonList.size() - 1));
             mainList.insertPurchase(354, addonList.getPurchaseByIndex(0));
-            if (mainList.deletePurchase(3) < 0) {printErr("Error : you try to delete an invalid index");}
-            if (mainList.deletePurchase(4) < 0) {printErr("Error : you try to delete an invalid index");}
-            if (mainList.deletePurchase(5) < 0) {printErr("Error : you try to delete an invalid index");} 
-            if (mainList.deletePurchase(-7) < 0){printErr("Error : you try to delete an invalid index");} 
-            if (mainList.deletePurchase(20) < 0){printErr("Error : you try to delete an invalid index");}
+            if (mainList.deletePurchase(3) < 0) {printErr("Error : you try delete an invalid index");}
+            if (mainList.deletePurchase(-7) < 0){printErr("Error : you try delete an invalid index");} 
+            if (mainList.deletePurchase(20) < 0){printErr("Error : you try delete an invalid index");}
+            mainList.deletePurchase(1, 5);
             printList(mainList, "before sorting");
             mainList.sort();
             printList(mainList, "after sorting");
-            search(mainList, addonList, 1);
-            search(mainList, addonList, 3);        
+            search(mainList, addonList, 5);
+            search(mainList, addonList, 2);        
             }
     private static void printList(PurchasesList list, String header) {
-        System.out.println(header);System.out.println(list.getProducts());}
+        System.out.println(header);System.out.println(list.getProducts());System.out.println();}
 
     private static void search(PurchasesList in, PurchasesList addon, int index) {
         Purchase purchase = addon.getPurchaseByIndex(index);

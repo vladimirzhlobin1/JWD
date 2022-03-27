@@ -1,13 +1,18 @@
 package by.epam.lab.main;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Formatter;
+import java.util.List;
+import java.util.Scanner;
+
 import by.epam.lab.Constants;
 import by.epam.lab.comparators.PurchaseComparatorBuilder;
 import by.epam.lab.enums.EnumRow;
 import by.epam.lab.exceptions.RawException;
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.*;
 
 public class PurchasesList {
 
@@ -24,9 +29,9 @@ public class PurchasesList {
 
     public PurchasesList(String fileName) {
         this();
-   
         try {
-        	Scanner  scanner = new Scanner(new FileReader(Constants.PACKAGE + fileName));
+        	Scanner scanner = new Scanner(new FileReader(Constants.PACKAGE + fileName));
+
             while (scanner.hasNext()) {
                 Purchase purchase = null;
                 try {
@@ -38,7 +43,7 @@ public class PurchasesList {
 
         } catch (FileNotFoundException e) {
             System.err.println(Constants.ERROR_FILE + Constants.PACKAGE+ fileName + Constants.FORMAT);
-        }}
+        } }
 
     public void setPurchases(List<Purchase> purchases) {
         if (purchases == null) {
@@ -63,15 +68,12 @@ public class PurchasesList {
         formatter.format(format, EnumRow.NAME, EnumRow.PRICE, EnumRow.NUMBER,
                 EnumRow.DISCOUNT, EnumRow.COST);
         builder.append(formatter).append(Constants.NEW_LINE_LIST);
-
         for (Purchase purchase : purchases) {
             builder.append(PrintPurchase.print(purchase)).append(Constants.NEW_LINE_LIST);
         }
-
         formatter = new Formatter();
         formatter.format(Constants.TOTAL_COST + Constants.FORMATTER_TOTALCOST + Constants.NEW_LINE, getFullCost());
         builder.append(formatter);
-
         return builder.toString();
     }
 
@@ -110,6 +112,25 @@ public class PurchasesList {
         }
         return res;
     }
+    
+  public int deletePurchase ( int from, int to){
+	  if (from <0) {from=0;}
+	  if(from>=purchases.size()) {
+		  return 0;
+	  }
+	if (to <0) {
+		return 0;
+	}
+	if (to>purchases.size()) {
+		to = purchases.size();
+	}
+purchases.subList(from, to).clear();
+return 1;
+	 }
+  
+
+	
+
 
     public Purchase getPurchaseByIndex(int index) {
         Purchase purchase;
@@ -134,6 +155,5 @@ private void errorPuch() {
         }
         return Collections.binarySearch(purchases, purchase, PURCHASE_COMPARATOR);
     }
-    
     
 }

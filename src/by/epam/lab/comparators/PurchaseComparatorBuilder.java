@@ -4,7 +4,7 @@ import java.util.Comparator;
 import by.epam.lab.main.Purchase;
 public class PurchaseComparatorBuilder {
     private static Comparator<Purchase> purchaseComparator;
-    private PurchaseComparatorBuilder() {}
+    private PurchaseComparatorBuilder() {} //for newInstance
     public static Comparator<Purchase> getPurchaseComparator() {return purchaseComparator;}
     public static void buildPurchaseComparator(String comparator) {
         if (purchaseComparator != null) { return;}

@@ -28,6 +28,8 @@ public class Byn implements Comparable<Byn> {
         this.costOfObject = rubs * 100 + coins;
     }
 
+   
+
     public int getRubs() {
         return this.costOfObject / 100;
     }
@@ -46,11 +48,14 @@ public class Byn implements Comparable<Byn> {
 public int getCoins() {
         return this.costOfObject % 100;
     }
-  
+   
+
     public Byn add(Byn byn) {
         this.costOfObject += byn.costOfObject;
         return this;
     }
+
+    
 
     public Byn mul(int k) {
         if (k < 0) {
@@ -71,6 +76,8 @@ public Byn sub(Byn byn) {
         return this;
     }
 
+   
+
     public Byn mul(double k) {
         mul(k, Round.ROUND, 0);
         return this;
@@ -83,6 +90,8 @@ public Byn sub(Byn byn) {
         mul(k, round, 0);
         return this;
     }
+
+  
 
     public Byn round(int value) {
         round(Round.ROUND, value);
