@@ -31,22 +31,25 @@ public class Byn implements Comparable<Byn> {
     public int getRubs() {
         return this.costOfObject / 100;
     }
- public Byn(Byn byn) {
+
+    public Byn(Byn byn) {
         this(byn.costOfObject);
     }
-    
- @Override
+
+    @Override
     public String toString() {
         return getRubs() + "." + costOfObject / 10 % 10 + costOfObject % 10;
     }
+
     @Override
     public int compareTo(Byn byn) {
         return this.costOfObject - byn.costOfObject;
     }
-public int getCoins() {
+
+    public int getCoins() {
         return this.costOfObject % 100;
     }
-   
+
     public Byn add(Byn byn) {
         this.costOfObject += byn.costOfObject;
         return this;
@@ -59,7 +62,8 @@ public int getCoins() {
         this.costOfObject *= k;
         return this;
     }
-public Byn sub(Byn byn) {
+
+    public Byn sub(Byn byn) {
         if (costOfObject < byn.costOfObject) {
             throw new NegativeArgumentException(costOfObject - byn.costOfObject, Fields.BYN);
         }
@@ -71,7 +75,8 @@ public Byn sub(Byn byn) {
         mul(k, 0);
         return this;
     }
- public Byn mul(double k, int digits) {
+
+    public Byn mul(double k, int digits) {
         mul(k, digits);
         return this;
     }

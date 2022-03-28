@@ -5,9 +5,9 @@ import by.epam.lab.enums.Fields;
 
 public class NegativeArgumentException extends NonpositiveArgumentException {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public NegativeArgumentException() {
+    public NegativeArgumentException() {
     }
 
     public NegativeArgumentException(int value, Fields field) {
