@@ -1,5 +1,4 @@
 package by.epam.lab.main;
-
 import by.epam.lab.Constants;
 import by.epam.lab.enums.Fields;
 import by.epam.lab.exceptions.NonpositiveArgumentException;
@@ -10,7 +9,6 @@ public class Purchase implements Comparable<Purchase> {
     private String name;
     private int number;
     private Byn price;
-
     public Purchase() {
         throw new IllegalArgumentException(Constants.ERROR_NAME);
     }
@@ -19,8 +17,7 @@ public class Purchase implements Comparable<Purchase> {
         setNameAndNumber(name, unitsNumber);
         setPrice(priceInt);
     }
-
-    public Purchase(String name, Byn price, int unitsNumber) {
+ public Purchase(String name, Byn price, int unitsNumber) {
         setNameAndNumber(name, unitsNumber);
         setPrice(price);
     }
@@ -29,12 +26,10 @@ public class Purchase implements Comparable<Purchase> {
         checkPositive(unitsNumber, Fields.NUMBER);
         this.number = unitsNumber;
     }
-
-    private void setNameAndNumber(String name, int unitsNumber) {
+private void setNameAndNumber(String name, int unitsNumber) {
         setName(name);
         setNumber(unitsNumber);
     }
-
     public void setPrice(Byn price) {
         if (price.equals(new Byn())) {
             throw new NonpositiveArgumentException(0, Fields.PRICE);
@@ -60,15 +55,13 @@ public class Purchase implements Comparable<Purchase> {
     public String getName() {
         return name;
     }
-
-    public Byn getPrice() {
+public Byn getPrice() {
         return price;
     }
 
     public int getNumber() {
         return number;
     }
-
     public Byn getCost() {
         Byn cost = new Byn(price);
         return cost.mul(number);
@@ -88,7 +81,7 @@ public class Purchase implements Comparable<Purchase> {
             throw new NonpositiveArgumentException(value, field);
         }
     }
-
+ 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -102,5 +95,5 @@ public class Purchase implements Comparable<Purchase> {
 
     public int compareTo(Purchase purchase) {
         return purchase.getCost().compareTo(getCost());
-    }
+    }   
 }

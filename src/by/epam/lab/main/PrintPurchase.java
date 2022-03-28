@@ -10,11 +10,11 @@ public class PrintPurchase {
     public static String print(Purchase purchase) {
 
         Formatter formatter = new Formatter();
-        String format = EnumRow.NAME.get() + Constants.DELIMITER +
-                EnumRow.PRICE.get() + Constants.DELIMITER +
-                EnumRow.NUMBER.get() + Constants.DELIMITER +
-                EnumRow.DISCOUNT.get() + Constants.DELIMITER +
-                EnumRow.COST.get() + Constants.DELIMITER;
+        String format = EnumRow.NAME.get() +Constants.DELIMITER+
+                EnumRow.PRICE.get() +Constants.DELIMITER+
+                EnumRow.NUMBER.get() +Constants.DELIMITER+
+                EnumRow.DISCOUNT.get() +Constants.DELIMITER+
+                EnumRow.COST.get()+Constants.DELIMITER;
         formatter.format(format, purchase.getName(), purchase.getPrice(), purchase.getNumber(),
                 getDiscount(purchase), purchase.getCost());
         return formatter.toString();

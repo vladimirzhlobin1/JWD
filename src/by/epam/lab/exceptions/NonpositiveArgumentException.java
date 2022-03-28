@@ -5,10 +5,10 @@ import by.epam.lab.enums.Fields;
 
 public class NonpositiveArgumentException extends IllegalArgumentException {
 
-    private static final long serialVersionUID = 1L;
-    private Fields raw;
-    private int value;
-
+	private static final long serialVersionUID = 1L;
+	private Fields raw;
+	private int value;
+    
 
     public int getValue() {
         return value;

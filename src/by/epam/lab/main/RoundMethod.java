@@ -1,5 +1,4 @@
 package by.epam.lab.main;
-
 public enum RoundMethod {
     ROUND {
         double roundFunction(double roundingCostOfObject) {
