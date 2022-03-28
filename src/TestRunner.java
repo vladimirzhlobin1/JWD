@@ -17,11 +17,13 @@ public class TestRunner {
 @Test
 	public void testFabricMethod () throws RawException {
 		String purchase = "bread;155;1"; 
+		Purchase purchase1 = new Purchase("bread", new Byn(155),1);
 		String purchaseDiscount = "bread;180;2;10"; 
+		PriceDiscountPurchase priceDiscountPurchase = new PriceDiscountPurchase("bread", 180, 2, 10);
 		Purchase purchaseOBJ = PurchasesFactory.getPurchaseFromFactory(purchase);
 		Purchase purchaseDiscountObj = PurchasesFactory.getPurchaseFromFactory(purchaseDiscount);
-		assertEquals(purchase.toString(), purchaseOBJ.toString());
-		assertEquals(purchaseDiscount.toString(), purchaseDiscountObj.toString());	
+		assertEquals(purchase1.toString(), purchaseOBJ.toString());
+		assertEquals(priceDiscountPurchase.toString(), purchaseDiscountObj.toString());	
 	}
 @Test
 public void testPuchaseConstructor(){
@@ -35,7 +37,9 @@ public void testPuchaseConstructor(){
 	puchasTest.add(new PriceDiscountPurchase("butter", 341, 1, 1));
 	puchasTest.add(new PriceDiscountPurchase("meat", 1100, 2, 80));
 	PurchasesList puchList = new PurchasesList(FILE_NAME);
-	assertEquals(puchasTest.toString(), puchList.toString());
+	PurchasesList puchList1 = new PurchasesList();
+	puchList1.setPurchases(puchasTest);
+	assertEquals(puchList1.getProducts(), puchList.getProducts());
 }
 @Test
 public void testTotalCost() {
@@ -51,5 +55,85 @@ public void testSearchElement() {
 	assertEquals(5, i);
 }
 
-//@Test(expected = IllegalArgumentException.){}
+@Test
+public void testAddElementIntoRightPos() {
+    List<Purchase> purchasesTest = new ArrayList<>();
+    purchasesTest.add(new PriceDiscountPurchase("bread", 155, 1, 2));
+    purchasesTest.add(new Purchase("milk", 131, 2));
+    purchasesTest.add(new Purchase("butter", 370, 1));
+    purchasesTest.add(new Purchase("bread", 154, 3));
+    purchasesTest.add(new Purchase("bread", 145, 5));
+    purchasesTest.add(new PriceDiscountPurchase("potato", 180, 2, 10));
+    purchasesTest.add(new Purchase("butter", 370, 1));
+    purchasesTest.add(new PriceDiscountPurchase("butter", 341,1,1));
+    purchasesTest.add(new PriceDiscountPurchase("meat", 1100, 2, 80));
+    PurchasesList purchaseList = new PurchasesList(FILE_NAME);
+    purchaseList.insertPurchase(2, new Purchase("butter",370,1));
+    PurchasesList puchList1 = new PurchasesList();
+    puchList1.setPurchases(purchasesTest);
+    assertEquals(puchList1.getProducts(), purchaseList.getProducts());
+}
+
+
+@Test
+public void testAddElementIntoPosLesZero() {
+    List<Purchase> purchasesTest = new ArrayList<>();
+    purchasesTest.add(new Purchase("butter", 370, 1));
+    purchasesTest.add(new PriceDiscountPurchase("bread", 155, 1, 2));
+    purchasesTest.add(new Purchase("milk", 131, 2));
+    purchasesTest.add(new Purchase("bread", 154, 3));
+    purchasesTest.add(new Purchase("bread", 145, 5));
+    purchasesTest.add(new PriceDiscountPurchase("potato", 180, 2, 10));
+    purchasesTest.add(new Purchase("butter", 370, 1));
+    purchasesTest.add(new PriceDiscountPurchase("butter", 341, 1, 1));
+    purchasesTest.add(new PriceDiscountPurchase("meat", 1100, 2, 80));
+    PurchasesList purchaseList = new PurchasesList(FILE_NAME);
+    purchaseList.insertPurchase(-2, new Purchase("butter",370,1));
+    PurchasesList puchList1 = new PurchasesList();
+    puchList1.setPurchases(purchasesTest);
+    assertEquals(puchList1.getProducts(), purchaseList.getProducts());
+}
+public void testAddElementMoreThenList() {
+    List<Purchase> purchasesTest = new ArrayList<>();
+    purchasesTest.add(new Purchase("butter", 370, 1));
+    purchasesTest.add(new PriceDiscountPurchase("bread", 155, 1, 2));
+    purchasesTest.add(new Purchase("milk", 131, 2));
+    purchasesTest.add(new Purchase("bread", 154, 3));
+    purchasesTest.add(new Purchase("bread", 145, 5));
+    purchasesTest.add(new PriceDiscountPurchase("potato", 180, 2, 10));
+    purchasesTest.add(new Purchase("butter", 370, 1));
+    purchasesTest.add(new PriceDiscountPurchase("butter", 341, 1, 1));
+    purchasesTest.add(new PriceDiscountPurchase("meat", 1100, 2, 80));
+    PurchasesList purchaseList = new PurchasesList(FILE_NAME);
+    purchaseList.insertPurchase(60, new Purchase("butter",370,1));
+    PurchasesList puchList1 = new PurchasesList();
+    puchList1.setPurchases(purchasesTest);
+    assertEquals(puchList1.getProducts(), purchaseList.getProducts());
+}
+
+@Test
+public void testDeleteSubsequenceWithCorrectIndexes() {
+    PurchasesList purchaseList = new PurchasesList(FILE_NAME);
+    purchaseList.deletePurchase(0, 2);
+    List<Purchase> purchasesTest = new ArrayList<>();
+    purchasesTest.add(new Purchase("bread", 154, 3));
+    purchasesTest.add(new Purchase("bread", 145, 5));
+    purchasesTest.add(new PriceDiscountPurchase("potato",180, 2, 10));
+    purchasesTest.add(new Purchase("butter", 370,1));
+    purchasesTest.add(new PriceDiscountPurchase("butter", 341, 1, 1));
+    purchasesTest.add(new PriceDiscountPurchase("meat", 1100, 2, 80));
+    PurchasesList puchList1 = new PurchasesList();
+    puchList1.setPurchases(purchasesTest);
+    assertEquals(puchList1.getProducts(), purchaseList.getProducts());
+}
+@Test
+public void testDeleteSubsequenceWithIncorrectIndexes() {
+    PurchasesList purchaseList = new PurchasesList(FILE_NAME);
+    purchaseList.deletePurchase(0, 20);
+    List<Purchase> purchasesTest = new ArrayList<>();
+   
+    PurchasesList puchList1 = new PurchasesList();
+    puchList1.setPurchases(purchasesTest);
+    assertEquals(puchList1.getProducts(), purchaseList.getProducts());
+}
 }
