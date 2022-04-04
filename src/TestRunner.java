@@ -6,6 +6,8 @@ import java.util.List;
 import org.junit.Test;
 
 import by.epam.lab.*;
+import by.epam.lab.exceptions.NegativeArgumentException;
+import by.epam.lab.exceptions.NonpositiveArgumentException;
 import by.epam.lab.exceptions.RawException;
 import by.epam.lab.main.Byn;
 import by.epam.lab.main.PriceDiscountPurchase;
@@ -141,4 +143,27 @@ public class TestRunner {
         puchList1.setPurchases(purchasesTest);
         assertEquals(puchList1.getProducts(), purchaseList.getProducts());
     }
+
+    @Test(expected = RawException.class)
+    public void testFabriqElementLessEq() throws RawException {
+        Purchase purchObj = PurchasesFactory.getPurchaseFromFactory("bread");
+        Purchase purchObj1 = PurchasesFactory.getPurchaseFromFactory(new String("bread;2;1;4;d"));
+        Purchase purchObj2 = PurchasesFactory.getPurchaseFromFactory(new String("bread;2;1;-4"));
+        Purchase purchObj3 = PurchasesFactory.getPurchaseFromFactory(new String("bread;2;1;40"));
+    }
+
+    @Test
+    public void testStringRepresentation() {
+        PurchasesList purchaseList = new PurchasesList(FILE_NAME);
+        String listToString = purchaseList.getProducts();
+        String g = ";";
+        final String resultString = "NAME;PRICE;NUMBER;DISCOUNT;COST;\n" +
+                "bread;1.55;1;0.02;1.53;\n" + "milk;1.31;2;no discount;2.62;\n"
+                + "bread;1.54;3;no discount;4.62;\n" + "bread;1.45;5;no discount;7.25;\n" +
+                "potato;1.80;2;0.10;3.40;\n" + "butter;3.70;1;no discount;3.70;\n" + "butter;3.41;1;0.01;3.40;\n"
+                + "meat;11.00;2;0.80;20.40;\n" + "Total cost                          46.92\n";
+        assertEquals(resultString, listToString.toString());
+    }
+
+
 }
