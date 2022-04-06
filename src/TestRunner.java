@@ -1,4 +1,5 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -160,10 +161,38 @@ public class TestRunner {
         final String resultString = "NAME;PRICE;NUMBER;DISCOUNT;COST;\n" +
                 "bread;1.55;1;0.02;1.53;\n" + "milk;1.31;2;no discount;2.62;\n"
                 + "bread;1.54;3;no discount;4.62;\n" + "bread;1.45;5;no discount;7.25;\n" +
-                "potato;1.80;2;0.10;3.40;\n" + "butter;3.70;1;no discount;3.70;\n" + "butter;3.41;1;0.01;3.40;\n"
+                "potato;1.80;2;0.10;3.40;\n" + "butter;3.70;1;no discount;3.70;\n"
+                + "butter;3.41;1;0.01;3.40;\n"
                 + "meat;11.00;2;0.80;20.40;\n" + "Total cost                          46.92\n";
-        assertEquals(resultString, listToString.toString());
+        assertEquals(resultString, listToString);
     }
 
+    @Test
+    public void testDelWithIncIndex() {
+        PurchasesList purchaseList = new PurchasesList(FILE_NAME);
+        purchaseList.deletePurchase(0, 20);
+        List<Purchase> purchasesTest = new ArrayList<>();
+        PurchasesList purchaseLis = new PurchasesList();
+        purchaseLis.setPurchases(purchasesTest);
+        assertEquals(purchaseLis.getProducts(), purchaseList.getProducts());
+    }
 
+    @Test
+    public void testListSort() {
+        PurchasesList purchaseList = new PurchasesList(FILE_NAME);
+        purchaseList.sort();
+        List<Purchase> purchasesTest = new ArrayList<>();
+        purchasesTest.add(new Purchase("bread", 154, 3));
+        purchasesTest.add(new Purchase("bread", 145, 5));
+        purchasesTest.add(new PriceDiscountPurchase("potato", 180, 2, 10));
+        purchasesTest.add(new Purchase("butter", 370, 1));
+        purchasesTest.add(new PriceDiscountPurchase("bread", 155, 1, 2));
+        purchasesTest.add(new Purchase("milk", 131, 2));
+        purchasesTest.add(new PriceDiscountPurchase("butter", 341, 1, 1));
+        purchasesTest.add(new PriceDiscountPurchase("meat", 1100, 2, 80));
+        PurchasesList puchList1 = new PurchasesList();
+        puchList1.setPurchases(purchasesTest);
+        puchList1.sort();
+        assertEquals(puchList1.getProducts(), purchaseList.getProducts().toString());
+    }
 }

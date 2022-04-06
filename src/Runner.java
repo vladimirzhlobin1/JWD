@@ -24,7 +24,7 @@ public class Runner {
         mainList.deletePurchase(1, 5);
         printList(mainList, "print before sort");
         mainList.sort();
-        printList(mainList, "[rint after sort");
+        printList(mainList, "Print after sort");
         search(mainList, addonList, 5);
         search(mainList, addonList, 2);
     }
